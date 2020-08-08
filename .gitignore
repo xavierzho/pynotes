@@ -1,0 +1,5 @@
+# Project exclude paths
+/venv/
+/geckodriver.log/
+/text.py/
+/.idea/

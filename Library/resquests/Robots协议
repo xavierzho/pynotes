@@ -1,0 +1,4 @@
+Robots Exclusion Standard 网络爬虫排除标准
+作用：网站告知网络爬虫那些页面可以爬取，那些不行
+形式：在网络根目录下的robots.txt文件
+
