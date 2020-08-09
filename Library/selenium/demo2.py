@@ -3,12 +3,12 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 
 option = webdriver.ChromeOptions()
-# option.add_argument('headless')
+option.add_argument('headless')
 
 # 要换成适应自己的操作系统的chromedriver
 
 driver = webdriver.Chrome(
-    executable_path='C:\selenium_chromedriver\chromedriver.exe',
+    executable_path='D:/Devtools/ChromeDriver/chromedriver.exe',
     chrome_options=option
 )
 
