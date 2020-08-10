@@ -5,4 +5,5 @@
 /.idea/
 Library/selenium/baidu.png
 Library/selenium/ghostdriver.log
-text.py
+test.py
+
