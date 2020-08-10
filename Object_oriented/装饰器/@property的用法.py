@@ -1,4 +1,4 @@
-#
+# setter 和getter方法
 class Employee:
 
     def __init__(self, name, salary):
@@ -21,7 +21,6 @@ class Employee:
     def get_salary(self):
         print("salary run...")
         return self.__salary
-
     def set_salary(self, salary):
         if 1000 < salary < 50000:
             self.__salary = salary
