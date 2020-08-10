@@ -1,5 +1,5 @@
 from selenium import webdriver
-
+from time import sleep
 option = webdriver.ChromeOptions()
 # option.add_argument('headless')
 
@@ -26,8 +26,9 @@ res4 = driver.find_elements_by_partial_link_text('科技')
 # 通过标签名获取元素列表
 res5 = driver.find_elements_by_tag_name('li')
 
-
+"""
 driver.find_element_by_xpath('//*[@id="listvideoListUl"]/li[1]/div/a').click()
+
 # 获取当前所有的窗口
 current_window = driver.window_handles
 print(current_window)
@@ -42,4 +43,10 @@ driver.forward()  # 前进
 driver.switch_to_frame(0)
 # 处理弹框
 driver.switch_to_alert()
-
+"""
+for i in range(100):
+    driver.execute_script("window.scrollTo(0, document.body.scrollHeight); "
+                          "var lenOfPage=document.body.scrollHeight; return lenOfPage")
+    driver.find_element_by_xpath('//*[@id="listLoadMore"]').click()
+    if driver.find_element_by_xpath('//*[@id="listLoadMore"]').text == '没有更多内容':
+        break

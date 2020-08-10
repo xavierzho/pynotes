@@ -15,11 +15,11 @@ for i in range(1, 5):
     comment_html = result['data']['list']['html']
 
     tree = etree.HTML(comment_html)
-
+    print(tree)
     comments = tree.xpath('//div[@class="items_right"]')
 
-    for item in comments:
-        comment_time = item.xpath('./div[contains(@class,"starline")]/span[1]/text()')[0]
-        comment_content = item.xpath('./div[contains(@class,"describe_detail")]/span[1]//text()')[0]
-        print(comment_time)
-        print(comment_content)
+    # for item in comments:
+    #     comment_time = item.xpath('./div[contains(@class,"starline")]/span[1]/text()')[0]
+    #     comment_content = item.xpath('./div[contains(@class,"describe_detail")]/span[1]//text()')[0]
+    #     print(comment_time)
+    #     print(comment_content)
