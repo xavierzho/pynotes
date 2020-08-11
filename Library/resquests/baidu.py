@@ -8,14 +8,17 @@ http：//www.so.com/s?q=keyword
 
 import requests
 
-
 url = "https://www.baidu.com/"
-try:
-    kv = {'wd': 'python'}
-    r = requests.get(url, params=kv)
-    r.raise_for_status()
-# print(r.status_code)
-# print(r.request.url)  # 发送给百度的url
-    print(len(r.text))
-except:
-    print("爬取失败")
+proxy = {'http': '202.109.168.190:45131',
+         'https': '202.109.168.190:45131'
+         }
+headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
+                      'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36'
+    }
+
+kv = {'wd': 'python'}
+r = requests.get(url, params=kv, headers=headers, proxies=proxy, timeout=30)
+r.raise_for_status()
+
+print(r.status_code)
