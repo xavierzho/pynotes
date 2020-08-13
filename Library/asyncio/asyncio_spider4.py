@@ -21,9 +21,7 @@ class Common:
 
 
 # 线上的内网
-socksS_address_prod = [
-
-]
+socksS_address_prod = [{'http': '114.104.131.84:4526'}]
 DEPLOY_MODE = 'dev'
 
 
@@ -149,8 +147,9 @@ async def parse_html(cid, url, response):
 
     try:
         # 总供应量
-        total_circulation = tree.xpath('//div[@class="coinIntroduce"]/div[3]/div[3]/span[2]/text()')[0].strip().replace(
-            ',', '').replace('BTC', '')
+        total_circulation = \
+            re.findall('\d+,\\d+,\\d+', tree.xpath('//div[@class="coinIntroduce"]/div[3]/div[3]/span[2]/text()')[0])[
+                0].replace(',', '')
         coin_value['total_circulation'] = int(total_circulation)
     except:
         pass
@@ -212,12 +211,12 @@ async def down_and_parse_task(queue):
 
 
 async def push(data):
-    url = 'http://127.0.0.1:8000/aaa'
+    url = 'http://127.0.0.1:5000/'
     error = None
     for retry_cnt in range(3):
         try:
             async with aiohttp.ClientSession() as session:
-                async with session.post(url, data=json.dunps(data)) as response:
+                async with session.post(url, data=json.dumps(data)) as response:
                     pass
                 response.raise_for_status()
         except Exception as e:
