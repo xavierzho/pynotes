@@ -23,6 +23,6 @@ s = Student("zxq", 22, 90)
 s.say_age()
 print(s.name)
 # print(s.age)
-print(s._Person__age)  # 间接访问父类私有属性
+print(s.Person.__age)  # 间接访问父类私有属性
 
 print(dir(s))

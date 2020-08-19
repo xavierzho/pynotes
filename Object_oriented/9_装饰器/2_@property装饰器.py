@@ -1,15 +1,18 @@
+# 通过@property实现对私有属性的访问和修改
 # setter 和getter方法
+
+
 class Employee:
 
     def __init__(self, name, salary):
         self.__name = name
         self.__salary = salary
 
-    @property
+    @property  # 使用装饰器进行修饰，提供一个getter方法
     def salary(self):
         return self.__salary
 
-    @salary.setter
+    @salary.setter  # 使用装饰器进行装饰，提供一个setter方法
     def salary(self, salary):
         if 1000 < salary < 50000:
             self.__salary = salary

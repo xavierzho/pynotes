@@ -15,6 +15,7 @@ class Student(Person):  # 子类
 
     def __init__(self, name, age, score):
         Person.__init__(self, name, age)
+        # score是拓展的子类的实例属性
         self.score = score
 
     def say_introduce(self):

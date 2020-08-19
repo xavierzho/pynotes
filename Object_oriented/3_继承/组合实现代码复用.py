@@ -17,5 +17,7 @@ class Screen:
 
 
 m = MobilePhone(CPU(), Screen())
+print(MobilePhone.__mro__)
 m.cpu.calculate()
+
 m.screen.show()

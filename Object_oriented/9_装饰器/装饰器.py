@@ -1,7 +1,7 @@
 import time
 
 
-# 装饰器
+# 9_装饰器
 def calculate_time(f):
     def inner(*args, **kwargs):
         start_time = time.time()
