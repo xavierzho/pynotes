@@ -55,7 +55,7 @@ class CommonBullet(object):
         elif self.type == 'enemy':
             self.x = x
             self.y = y + 10
-            self.image_path = 'bullet2.png'
+            self.image_path = 'bullet.png'
         self.image = pygame.image.load(self.image_path)
 
     def move(self):

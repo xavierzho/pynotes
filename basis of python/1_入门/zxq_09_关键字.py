@@ -1,5 +1,6 @@
 import keyword
-print(keyword.kwlist)
+for item in keyword.kwlist:
+    print(item)
 
 """
 ['False', 'None', 'True', 'and', 'as', 'assert', 

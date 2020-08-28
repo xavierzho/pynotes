@@ -1,0 +1,11 @@
+AF(Address Family) 协议族
+AF_INET IPV4
+AF_INET6 IPV6
+AF_UNIX Unix Domain Socket ，windows没有
+
+Socket类型
+SOCK_STREAM TCP协议
+SOCK_DGRAM UDP协议
+
+TCP编程
+客户端：socket()->connect()->

@@ -1,10 +1,9 @@
 # Project exclude paths
 /venv/
 /geckodriver.log/
-/text.py/
 /.idea/
 Library/selenium/baidu.png
 Library/selenium/ghostdriver.log
 test.py
-
+test2.py
 

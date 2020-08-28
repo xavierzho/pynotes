@@ -21,8 +21,8 @@ def parsePage(ilt, html):
             price = eval(plt[i].split(":")[1])
             title = eval(tlt[i].split(':')[1])
             ilt.append([price, title])
-    except:
-        print("123")
+    except Exception as e:
+        print(e)
 
 
 def printGoodsList(ilt):
@@ -38,15 +38,15 @@ def main():
     goods = '笔记本电脑'
     depth = 2
     start_url = "https://s.taobao.com/search?q=" + goods
-    infoList = []
+    info_list = []
     for i in range(depth):
         try:
             url = start_url + '&s=' + str(48 * i)
             html = getHTMLText(url)
-            parsePage(infoList, html)
+            parsePage(info_list, html)
         except:
             continue
-    printGoodsList(infoList)
+    printGoodsList(info_list)
 
 
 main()
