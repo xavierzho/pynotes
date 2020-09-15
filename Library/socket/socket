@@ -1,5 +1,5 @@
 AF(Address Family) 协议族
-AF_INET IPV4
+AF_INET IPV4 -1
 AF_INET6 IPV6
 AF_UNIX Unix Domain Socket ，windows没有
 
