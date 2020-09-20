@@ -2,7 +2,6 @@
 # 析构对象
 
 
-
 class Person:
     def __init__(self, name):
         self.name = name

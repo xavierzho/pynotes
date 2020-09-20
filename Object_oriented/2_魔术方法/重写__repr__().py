@@ -5,7 +5,8 @@ class Person:  # 父类
         self.age = age
 
     def __str__(self):
-        return "名字是:{0} 年龄:{1}".format(self.name, self.age)
+        # return "名字是:{0} 年龄:{1}".format(self.name, self.age)
+        return '我是str'
 
     def __repr__(self):
         return "名字是:{0} 年龄:{1}".format(self.name, self.age)

@@ -18,6 +18,7 @@ def now():
 now()
 
 
+# 带参数的装饰器
 def logger(text):
     def decorator(func):
         @functools.wraps(func)

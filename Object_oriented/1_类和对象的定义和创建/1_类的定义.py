@@ -22,6 +22,7 @@ class Student:  # 类名首字母大写，多个单词采用大驼峰原则
         print("{0}的分数是：{1}".format(self.name, self.score))
 
 
+print(Student.company)
 s1 = Student("钟锡权", 90)  # 创建实例对象（类的实例化）
 # s1是实例对象，自动调用__init__()方法
 s1.say_score()
@@ -38,6 +39,7 @@ s2.say_score()
 Student.say_score(s2)  # 解释器调用方法，没有本质区别
 
 print('对象所有的属性:{}'.format(dir(s2)))  # 查看对象所有的属性
+
 
 print(s2.__dict__)
 

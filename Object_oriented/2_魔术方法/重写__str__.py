@@ -11,6 +11,7 @@ class Person:  # 父类
         """
         打印对象 自定义对象 改变输出的内容格式
         """
+        # return '格式化的时候触发'
         return "名字是:{0} 年龄:{1}".format(self.name, self.age)
 
 

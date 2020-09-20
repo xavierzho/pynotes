@@ -36,3 +36,33 @@ print(p)
 # __init__()用来做数据属性初始化工作的，也可以认为是实例的构造方法接受类的实例，通过self并对其进行构造
 # __new__(cls) 至少一个参数是cls代表实例化的类，此参数在实例化的时候，由python解释器自动提供
 
+
+'''完整的单例模式'''
+
+
+class A:
+    __instance = None  # <__main__.A object at 0x000001BAD7ACCE88>
+
+    def __init__(self, name):  # 给空间封装东西的
+        print('我是__init__')
+        self.name = name
+
+    def __new__(cls, *args, **kwargs):  # 开辟空间
+        print('我是__new__')
+        # 相当于执行
+        # cls.__init__(cls, 'a')  # 父类执行
+        if not cls.__instance:
+            cls.__instance = super().__new__(cls)  # 让父类开辟空间
+            print(cls.__instance)
+        return cls.__instance
+
+    def show(self):
+        print(self.name)
+
+
+a = A('a')
+a1 = A('met')
+print(a)
+# a和a1同一个内存地址 都是指向同一个空间,如果没有就创建,有则修改原来的值
+print(a.name)
+print(a1.name)
