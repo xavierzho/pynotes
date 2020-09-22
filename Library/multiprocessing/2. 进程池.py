@@ -4,7 +4,7 @@
 """
 import os
 import time
-from multiprocessing import Pool
+from multiprocessing import Pool, Manager
 
 
 def task1():
@@ -18,6 +18,7 @@ def callBack(msg):
 
 
 if __name__ == '__main__':
+    queue = Manager().Queue()
     pool = Pool(4)
     # 非阻塞式
     for i in range(10):

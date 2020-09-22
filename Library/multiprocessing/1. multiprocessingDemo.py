@@ -1,5 +1,3 @@
-
-
 import time
 import os
 from multiprocessing import Process
@@ -43,6 +41,9 @@ if __name__ == '__main__':
     p1 = Process(target=program)
     p2 = Process(target=listen_music)
     p3 = Process(target=wechat, args=('zxq', ))
+    # target表示可调用对象,args表示调用对象的位置参数元组
+    # (注意:元组中只有一个元素时末尾要加,)
+
     # 启动线程
     p1.start()
     p2.start()
@@ -56,17 +57,17 @@ if __name__ == '__main__':
     # p2.run()
     # p3.run()
 
-    print('main:', os.getpid())
-    for i in range(10):
-        if i == 3:
-            p1.terminate()  # 终止进程
-        elif i == 5:
-            p2.terminate()
-            # p2.close()
-        time.sleep(0.3)
-        print('main:', i)
+    # print('main:', os.getpid())
+    # for i in range(5):
+    #     if i == 3:
+    #         p1.terminate()  # 终止进程
+    #     elif i == 5:
+    #         p2.terminate()
+    #
+    #     time.sleep(0.3)
+    #     print('main:', i)
+    #
+    # p2.close()
 
-    p2.close()
-
-    print('p1是否活着：', p1.is_alive())
-    print('p2是否活着：', p2.is_alive())
+    # print('p1是否活着：', p1.is_alive())
+    # print('p2是否活着：', p2.is_alive())

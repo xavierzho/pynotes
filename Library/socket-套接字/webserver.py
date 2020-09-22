@@ -12,7 +12,7 @@ server端response
     响应头： key:value
     响应体: 数据
 """
-# from socket import socket, AF_INET, SOCK_STREAM
+# from socket-套接字 import socket-套接字, AF_INET, SOCK_STREAM
 from gevent import monkey, socket
 
 monkey.patch_all()
