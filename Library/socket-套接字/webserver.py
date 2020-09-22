@@ -14,9 +14,9 @@ server端response
 """
 # from socket-套接字 import socket-套接字, AF_INET, SOCK_STREAM
 from gevent import monkey, socket
-
-monkey.patch_all()
 import gevent
+monkey.patch_all()
+
 
 # 创建socket对象
 server = socket.socket()
