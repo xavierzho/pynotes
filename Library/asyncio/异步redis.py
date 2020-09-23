@@ -20,7 +20,7 @@ async def execute(address, password):
     await redis.wait_closed()
     print('结束', address)
 
-task_list = [execute('redis://localhost:6379', ''),
-             execute('redis://localhost:6379', '')]
+# task_list = [execute('redis://localhost:6379', ''),
+#              execute('redis://localhost:6379', '')]
 
-asyncio.run(asyncio.wait(task_list))
+asyncio.run(execute('redis://47.115.38.207:6379', 'root!997'))

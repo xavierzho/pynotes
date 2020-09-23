@@ -2,7 +2,7 @@ import asyncio
 
 
 class AsyncContextManger:
-    def __init__(self):
+    def __init__(self, conn):
         self.conn = conn
 
     async def do_something(self):

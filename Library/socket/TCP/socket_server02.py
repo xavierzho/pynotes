@@ -31,12 +31,12 @@ while True:
     t1 = Thread(target=send_msg(), args=(sock,))
     t2 = Thread(target=recv_msg(), args=(sock,))
 #     while True:
-#         data = socket-套接字.recv(1024).decode('utf-8')
+#         data = socket.recv(1024).decode('utf-8')
 #         print('{}客户端说的话：{}'.format(addr_info[0], data))
 #         if data == 'byebye':
 #             break
 #         msg = input('服务器端说的话:')
-#         socket-套接字.send(msg.encode('utf-8'))
+#         socket.send(msg.encode('utf-8'))
 #         if msg == 'byebye':
 #             break
     # 启动线程

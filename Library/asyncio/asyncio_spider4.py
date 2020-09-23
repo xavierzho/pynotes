@@ -32,7 +32,8 @@ async def session_get(session, url, socks):
                       'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36'
     }
     timeout = aiohttp.ClientTimeout(total=20)
-    response = await session.get(url, proxy=socks,
+    response = await session.get(url,
+                                 proxy=socks,
                                  proxy_auth=auth,
                                  headers=headers,
                                  timeout=timeout,
