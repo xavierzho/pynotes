@@ -1,58 +1,87 @@
-import requests
-import json
-from lxml import etree
+
+import pymysql
+import numpy as np
+from aiohttp import ClientSession
+import asyncio
+import ssl
+from pyquery import PyQuery as pq
 
 
 class BookSpider(object):
     def __init__(self):
-        self.base_url = 'http://www.allitebooks.org/page/{}'
+        self.base_url = 'http://www.allitebooks.org/page/{}/'
         self.headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36'
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
+                          '(KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36'
         }
-        self.data_list = []
 
-    def send_request(self, url):
-        data = requests.get(url, headers=self.headers).content.decode()
-        return data
+    async def fetch(self, url):
+        async with ClientSession() as session:
+            async with session.get(url, ssl=ssl.SSLContext()) as response:
+                return await response.text()
 
-    def get_url_list(self):
-        url_list = []
-        # 遍历url
-        for i in range(1, 861):
-            url = self.base_url.format(i)
-            url_list.append(url)
+    async def get_book_url(self, url):
+        async with ClientSession().get(url, ssl=ssl.SSLContext()) as response:
+            html = await response.text()
+        doc = pq(html)
+        book_list = doc('article').items()
 
-        return url_list
-
-    def parse_one_page_data(self, data):
-        parse_data = etree.HTML(data)
-        book_list = parse_data.xpath("//div[@class='entry-thumbnail hover-thumb']")
-
-        # 解析出每本书信息
+        # 解析出总页数
+        pages = doc('.pages').text().split(' ')
+        total = int(pages[2])
+        current = int(pages[0])
+        # 解析出每本书的url
         for book in book_list:
-            for i in range(10):
-                book_dict = {'book_name': book.xpath("//h2[@class='entry-title']/a/text()")[i],
-                             'book_url': book.xpath("//h2[@class='entry-title']/a/@href")[i],
-                             'book_author': book.xpath("//h5[@class='entry-author']/a/text()")[i],
-                             'book_introduction': book.xpath("//div[@class='entry-summary']/p/text()")[i]
-                             }
-                self.data_list.append(book_dict)
+            book_url = book('.entry-title a').attr('href')
+            yield book_url, total, current
 
-            return self.data_list
+    async def parse_detail(self, html):
+        doc = pq(html)
+        table = doc('.book-detail')
+        info_dict = {}
+        book_name = doc('.entry-header h1').text()
+        info_dict['book_name'] = book_name
+        # 处理dl列表标签内的文本
+        book_info = table.text().split('\n')
+        title = np.array(book_info[::2])
+        value = np.array(book_info[1::2])
+        str_join = list(np.char.add(title, value))
+        for item in str_join:
+            k = item.split(':')[0]
+            v = item.split(':')[-1]
+            info_dict[k] = v
 
-    def save_data(self, data):
-        fp = open('itbook.json', 'w', encoding='utf-8')
-        json.dump(data, fp)
-        fp.close()
+        # 处理书本描述的文本
+        book_des = doc('.entry-content').text()
+        info_dict['book_des'] = book_des
 
-    def main(self):
+        yield info_dict
 
-        url_list = self.get_url_list()
-        for url in url_list:
-            print('正在爬取：{}'.format(url))
-            data = self.send_request(url)
-            data2 = self.parse_one_page_data(data)
-            # self.save_data(data2)
+    async def main(self):
+
+        tasks = [asyncio.ensure_future(self.fetch(url)) for url in self.get_book_url(self.base_url)]
+        page = 0
+        while True:
+            page += 1
+            url = self.base_url.format(str(page))
+            start_html = await self.fetch(url)
+            parse = self.get_book_url(start_html)
+            print(f'爬取完成：{url}')
+            for i in parse:
+                book_url = i[0]
+                self.parse_detail(book_url)
+
+                total_pages = i[1]
+                current_pages = i[2]
+                if total_pages >= current_pages:
+                    continue
+                else:
+                    print('全部爬取完成')
+                    break
 
 
-BookSpider().main()
+if __name__ == '__main__':
+    asyncio.run(BookSpider().main())
+
+
+

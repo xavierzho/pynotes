@@ -1,15 +1,10 @@
 from socket import *
 
-
 s = socket(AF_INET, SOCK_DGRAM)
-s.bind(('', 8881))
-
-num = 0
+s.bind(('192.168.101.130', 8881))
 while True:
-    if num > 19:
-        data = s.recvfrom(1024)
-        s.sendto(data[0], data[1])
-        num += 1
-    else:
-        break
+    data = s.recvfrom(1024)
+    print(data[0].decode())
+    s.sendto(data[0], data[1])
+
 s.close()

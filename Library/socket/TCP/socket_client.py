@@ -21,7 +21,7 @@ from socket import socket, AF_INET, SOCK_STREAM
 # 创建客户端的socket
 client = socket(AF_INET, SOCK_STREAM)
 
-con_address = ('192.168.101.1', 10010)  # 连接的目标服务器
+con_address = ('192.168.101.103', 10010)  # 连接的目标服务器
 
 
 # 告诉客户端要链接的服务器的地址和端口号

@@ -1,12 +1,14 @@
+# TFTP服务端
 import struct
 from socket import *
 
 filename = r'c:/users/jonescy/OneDrive/文档'
 
-data = struct.pack(f'H{len(filename.encode("gb2312"))}sb5sb', 2, filename.encode('gb2312'), 0, b'octet', 0)
+# 构造请求
+data = struct.pack(f'H{len(filename.encode())}sb5sb', 2, filename.encode(), 0, b'octet', 0)
 s = socket(AF_INET, SOCK_DGRAM)
 s.sendto(data, ('127.0.0.1', 69))
-f = open(filename, 'rb')
+f = open(filename, 'ab')   #
 while True:
     ret = s.recvfrom(1024)
     port = ret[1]

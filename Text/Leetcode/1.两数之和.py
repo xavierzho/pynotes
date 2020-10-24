@@ -52,7 +52,7 @@ class Solution3:
         # enumerate()枚举函数：将列表中的值转化成带索引值的元组
         for idx, num in enumerate(nums_list):
             if target - num in dic:
-                # print(dic[target - nums_list[x]], x)
+                print(dic[target - num], idx)
                 return dic[target - num], idx
             else:
                 dic[num] = idx

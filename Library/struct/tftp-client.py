@@ -2,9 +2,9 @@
 import struct
 from socket import *
 
-
+filename = ''
 server_ip = '192.168.101.103'
-send_data = struct.pack('!H10sb5sb', 1, b'A0101a.xls', 0, b'octet', 0)
+send_data = struct.pack(f'!H{len(filename)}sb5sb', 1, filename.encode(), 0, b'octet', 0)
 s = socket(AF_INET, SOCK_DGRAM)
 s.sendto(send_data, (server_ip, 69))
 f = open('A0101a.xls', 'ab')
@@ -23,5 +23,6 @@ while True:
     ack_data = struct.pack('!HH', 4, ack_num)
     s.sendto(ack_data, (server_ip, rand_port))
 
+f.close()
 
 

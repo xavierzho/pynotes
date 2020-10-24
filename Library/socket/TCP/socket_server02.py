@@ -4,7 +4,7 @@ from threading import Thread
 # 创建socket对象
 server = socket(AF_INET, SOCK_STREAM)
 # 绑定端口号
-server.bind(('192.168.101.102', 10010))
+server.bind(('192.168.101.103', 10010))
 
 # 开启监听状态（LISTENING）
 server.listen(5)  # 传入参数为积压值
@@ -28,8 +28,8 @@ def recv_msg(sock):
 while True:
     sock, addr_info = server.accept()  # 阻塞的
     # 创建线程
-    t1 = Thread(target=send_msg(), args=(sock,))
-    t2 = Thread(target=recv_msg(), args=(sock,))
+    t1 = Thread(target=send_msg, args=(sock,))
+    t2 = Thread(target=recv_msg, args=(sock,))
 #     while True:
 #         data = socket.recv(1024).decode('utf-8')
 #         print('{}客户端说的话：{}'.format(addr_info[0], data))
