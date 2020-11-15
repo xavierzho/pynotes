@@ -17,3 +17,20 @@ def lazy_sum(*args):
 f = lazy_sum(1,3,5,7,9)
 print(f)
 print(f())
+
+
+def wrapper(func):
+    def inner(*args, **kwargs):
+        # 代码
+        res = func(*args, **kwargs)
+        # 代码
+        return res
+    return inner
+
+
+@wrapper
+def a():
+    print('aaa')
+# a = wrapper(a)
+# a()
+

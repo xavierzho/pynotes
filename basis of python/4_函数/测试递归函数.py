@@ -27,6 +27,8 @@ def factorial(n):
 result = factorial(5)
 
 print(result)
+
+
 # 分形几何？
 
 # 斐波那契数列 F（n）= F（n-1）+F（n-2）
@@ -36,7 +38,7 @@ def f(n):
     if n == 1 or n == 2:
         return 1
     else:
-        return f(n-1) + f(n-2)
+        return f(n - 1) + f(n - 2)
 
 
 print(f(6))
@@ -52,7 +54,7 @@ def hanoi(n, src, dst, mid):
         print("{}:{}->{}".format(1, src, dst))
         count += 1
     else:
-        hanoi(n-1, src, mid, dst)
+        hanoi(n - 1, src, mid, dst)
         print("{}:{}->{}".format(n, src, dst))
         count += 1
         hanoi(n - 1, src, mid, dst)
