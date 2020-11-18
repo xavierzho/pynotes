@@ -1,2 +1,2 @@
-# Learn-new-view
-Python learning project,include base、Third-party libraries
+# 记录自己python的一些笔记
+...
