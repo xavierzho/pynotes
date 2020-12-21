@@ -8,7 +8,6 @@
     因为 nums[0] + nums[1] = 2 + 7 = 9
     所以返回 [0, 1]
 """
-import time
 
 
 # 第一种解法
@@ -59,4 +58,3 @@ class Solution3:
 
 
 Solution3().num_sum([15, 7, 11, 2], 9)
-
