@@ -18,6 +18,7 @@ url = 'https://www.baidu.com'
 # 打开网站
 driver.get(url)
 # 打印当前页面的标题
+driver.implicitly_wait()
 print(driver.title)
 
 timeout = 5
