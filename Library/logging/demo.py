@@ -4,7 +4,7 @@ import logging
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s [%(filename)s:%(lineno)d line] %(levelname)s %(message)s',
                     datefmt='%a, %d %b %Y %H:%M:%S',
-                    # filename='myapp.log',
+                    # filename='myapp.log',  # 设置日志文件的路径
                     filemode='a')
 
 # logging.basicConfig(level=logging.INFO,

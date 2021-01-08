@@ -52,4 +52,4 @@ class GithubMockLogin(object):
         self.token()
 
 
-GithubMockLogin.main(object)
+GithubMockLogin().main()

@@ -2,8 +2,8 @@
 /venv/
 /geckodriver.log/
 /.idea/
-Library/selenium/baidu.png
-Library/selenium/ghostdriver.log
+Library/爬虫库/selenium/baidu.png
+Library/爬虫库/selenium/ghostdriver.log
 test.py
 
 

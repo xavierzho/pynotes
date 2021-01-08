@@ -1,12 +1,14 @@
 """
-@Author: Jonescyna@gmail.com
+@Author: Jonescyna
 @Created: 2020/12/28
 """
 
 import requests
 import time
+import re
 from pyquery import PyQuery as pq
 from lxml import etree
+from bs4 import BeautifulSoup
 
 
 def cal_time(func):
@@ -48,8 +50,26 @@ def parse_by_xpath(html):
             title = h2.xpath('./text()')[0]
 
 
+@cal_time
+def parse_by_bs4(html):
+    for _ in range(50):
+        soup = BeautifulSoup(html, 'lxml')
+        h2_list = soup.find_all('h2')
+        for h2 in h2_list:
+            title = h2.text
+
+
+@cal_time
+def parse_by_re(html):
+    for _ in range(50):
+        h2_list = re.findall(r'<h2 .*>\n(.*)\n<', html)
+        for h2 in h2_list:
+            title = h2
+
+
 if __name__ == '__main__':
     resp = get(base_url)
-
     parse_by_pq(resp)
     parse_by_xpath(resp)
+    parse_by_bs4(resp)
+    parse_by_re(resp)

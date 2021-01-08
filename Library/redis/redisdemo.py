@@ -1,5 +1,4 @@
 import redis
-
 # 链接数据库
 client = redis.StrictRedis(host='127.0.0.1', port=6379)
 
