@@ -9,7 +9,7 @@ import aiomysql
 from lxml import etree
 
 stopping = False
-loop = asyncio.get_event_loop()
+
 pending_urls = asyncio.Queue()
 seen_urls = set()
 
@@ -32,16 +32,11 @@ async def fetch(url, session):
 def extract_urls(html):
     urls = []
     doc = etree.HTML(html)
-    for link in doc.xpath('//a'):
-        url = link.xpath('./@href')
-        if url and url.startswith('http') and url not in seen_urls:
-            if re.match(r'https://www\.cnblogs\.com/.*/p/\d+\.html', url):
-                urls.append(url)
-                pending_urls.put_nowait(url)
-            else:
-                pass
-        else:
-            pass
+    for link in doc.xpath('//a/@href'):
+        if link and link.startswith('http') and link not in seen_urls:
+            if re.match(r'https://www\.cnblogs\.com/.*/p/\d+\.html', link):
+                urls.append(link)
+                pending_urls.put_nowait(link)
 
     return urls
 
@@ -72,24 +67,26 @@ async def consumer(pool):
     async with aiohttp.ClientSession() as session:
 
         while not stopping:
-            url = pending_urls.get_nowait()
-            print(f'start get:{url}')
-            if url not in seen_urls:
-                asyncio.create_task(article_handler(url, session, pool))
+            if not pending_urls.empty():
+                url = pending_urls.get_nowait()
+                # print(f'start get:{url}')
+                if url not in seen_urls:
+                    loop.create_task(article_handler(url, session, pool))
 
 
 async def main():
     # 等待mysql链接建立
-    pool = await aiomysql.create_pool(host="127.0.0.1", port=3306,
+    pool = await aiomysql.create_pool(host="localhost", port=3306,
                                       user='root', password='1997',
                                       db='aiomysql_test', loop=loop,
-                                      charset="utf-8", autocommit=True
+                                      use_unicode="utf-8", autocommit=True
                                       )
 
-    asyncio.ensure_future(init_urls())
-    asyncio.ensure_future(consumer(pool))
+    loop.create_task(init_urls())
+    loop.create_task(consumer(pool))
 
 
 if __name__ == '__main__':
-    asyncio.create_task(main())
+    loop = asyncio.get_event_loop()
+    asyncio.ensure_future(main())
     loop.run_forever()
