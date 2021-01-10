@@ -247,7 +247,7 @@ async def time_limit():
 
 
 async def main():
-    csv_render = csv.reader(open('FeiXiaHao_mapping_data.csv', encoding='utf-8'))
+    csv_render = csv.reader(open('../../../内置模块/json or csv/FeiXiaHao_mapping_data.csv', encoding='utf-8'))
     for row in csv_render:
         try:
             if row[1].startswith('https'):

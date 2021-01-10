@@ -5,10 +5,10 @@ import time
 exitFlag = 0
 
 
-class myThread(threading.Thread):
-    def __init__(self, threadID, name, q):
+class MyThread(threading.Thread):
+    def __init__(self, thread_id, name, q):
         threading.Thread.__init__(self)
-        self.threadID = threadID
+        self.thread_id = thread_id
         self.name = name
         self.q = q
 
@@ -18,13 +18,13 @@ class myThread(threading.Thread):
         print("退出线程：" + self.name)
 
 
-def process_data(threadName, q):
+def process_data(thread_name, q):
     while not exitFlag:
         queueLock.acquire()
         if not workQueue.empty():
             data = q.get()
             queueLock.release()
-            print("%s processing %s" % (threadName, data))
+            print("%s processing %s" % (thread_name, data))
         else:
             queueLock.release()
         time.sleep(1)
@@ -39,7 +39,7 @@ threadID = 1
 
 # 创建新线程
 for tName in threadList:
-    thread = myThread(threadID, tName, workQueue)
+    thread = MyThread(threadID, tName, workQueue)
     thread.start()
     threads.append(thread)
     threadID += 1

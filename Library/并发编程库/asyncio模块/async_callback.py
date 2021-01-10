@@ -5,6 +5,7 @@
 import asyncio
 from functools import partial
 
+
 async def get_html(url):
     print(f"start get url:{url}")
     await asyncio.sleep(2)
@@ -13,15 +14,22 @@ async def get_html(url):
 
 
 def callback(url, task):
+    """
+
+    :param url:
+    :param task: task对象
+    :return:
+    """
     # partial绑定参数必须放前面
-    print('parse detail', task.result(), url)
+    print('回调绑定的参数', task.result(), url)
+
+
+async def main():
+    base_url = 'http://www.baidu.com/'
+    task = asyncio.create_task(get_html(base_url))
+    await task
+    task.add_done_callback(partial(callback, base_url))
 
 
 if __name__ == '__main__':
-    url = 'www.baidu.com'
-    loop = asyncio.get_event_loop()
-    # future = asyncio.ensure_future(get_html(url))
-    future = loop.create_task(get_html(url))
-    future.add_done_callback(partial(callback, url))
-    loop.run_until_complete(future)
-    # print(future.result())
+    asyncio.run(main())

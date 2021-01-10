@@ -11,9 +11,11 @@ async def get_html(url):
     print(f"end get url:{url}")
 
 
-if __name__ == '__main__':
+async def main():
     url = 'www.baidu.com'
-    loop = asyncio.get_event_loop()
-    tasks = [get_html(url) for i in range(10)]
-    loop.run_until_complete(asyncio.wait(tasks))
+    tasks = [get_html(url) for _ in range(10)]
+    await asyncio.gather(*tasks)
 
+
+if __name__ == '__main__':
+    asyncio.run(main())

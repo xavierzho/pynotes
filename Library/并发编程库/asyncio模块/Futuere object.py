@@ -1,4 +1,4 @@
-# asyncio_module.Future() 对象
+# asyncio模块.Future() 对象
 # concurrent.futures.Future() 对象（使用线程池、进程池实现异步操作用到的对象）
 # task类继承于Future对象，他是一个底层的类，task对象内部await 结果的处理基于Future对象来的
 import asyncio

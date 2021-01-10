@@ -26,7 +26,7 @@ def get_data():
 
 
 def download(data):
-    fp = open('Library/asyncio_module/FeiXiaHao_mapping_data.csv', 'a', encoding='utf-8')
+    fp = open('Library/asyncio模块/FeiXiaHao_mapping_data.csv', 'a', encoding='utf-8')
     writer = csv.writer(fp)
     writer.writerow(['code', 'item_url', 'full_name', 'name'])
     for i in data:

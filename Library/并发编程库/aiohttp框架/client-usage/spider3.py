@@ -62,7 +62,7 @@ async def main():
 
         tasks = [asyncio.create_task(fetch(session, url)) for url in url_list]
         await asyncio.gather(*tasks)
-        # done, pending = await asyncio_module.wait(tasks)
+        # done, pending = await asyncio模块.wait(tasks)
         # print(done)
         # print(pending)
 

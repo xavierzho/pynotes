@@ -22,7 +22,7 @@ async def execute(address, password):
 
 task_list = [execute('localhost', "1997"),
              execute('localhost', "1997")]
-# asyncio_module.run(asyncio_module.wait(task_list))
+# asyncio模块.run(asyncio模块.wait(task_list))
 
 # 单数据链接的
 asyncio.run(execute('localhost', "1997"))

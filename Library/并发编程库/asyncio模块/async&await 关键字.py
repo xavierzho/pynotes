@@ -6,7 +6,7 @@ async def func():
     # 网络IO请求：下载一张图片
     response1 = await asyncio.sleep(2)  # 遇到IO耗时操作，自动化切换到tasks中的其他任务
     print("IO 结束", response1)
-    response2 = await  asyncio.sleep(2)
+    response2 = await asyncio.sleep(2)
     print("IO 结束", response2)
 
 
@@ -26,13 +26,13 @@ async def main():
 
 # 协程对象
 # tasks = [
-#     asyncio_module.ensure_future(func1()),
-#     asyncio_module.ensure_future(func2())
+#     asyncio模块.ensure_future(func1()),
+#     asyncio模块.ensure_future(func2())
 # ]
 
 
 # # 生成或获取一个时间循环
 loop = asyncio.get_event_loop()
 # 将任务放到任务列表
-loop.run_until_complete(asyncio.wait(main()))  # wait+ 可等待的对象（协程对象，Future，Tsak对象->IO等待）
-# asyncio_module.run(main())  # python3.7up
+loop.run_until_complete(main())  # wait+ 可等待的对象（协程对象，Future，Tsak对象->IO等待）
+# asyncio模块.run(main())  # python3.7up
