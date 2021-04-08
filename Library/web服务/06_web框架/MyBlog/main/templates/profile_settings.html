@@ -1,0 +1,133 @@
+{% extends 'account_settings.html' %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/setting-menu.css' %}">
+    <script src="{% static 'js/csrftoken.js' %}"></script>
+    <style>
+        tr {
+            margin: 20px;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <table>
+        <thead></thead>
+        <tbody>
+        <tr>
+            <td><label for="id_name">姓名</label></td>
+            <td>
+                {% if user_obj %}
+                    <input type="text" value="{{ user_obj.name }}" class="form-control" id="id_name" name="name">
+                {% else %}
+                    <input type="text" value="" class="form-control" id="id_name" name="name" placeholder="请输入姓名">
+                {% endif %}
+
+            </td>
+        </tr>
+        <tr>
+            <td><label for="id_gender">性别</label></td>
+            <td>
+                {% if user_obj.gender %}
+
+                    <input type="radio" value="1" name="gender" id="male" class="gender" checked>男
+                    <input type="radio" value="2" name="gender" id="female" class="gender">女
+                    <input type="radio" value="3" name="gender" id="other" class="gender">其他
+                {% else %}
+                    <input type="radio" value="1" name="gender" id="male" class="gender">男
+                    <input type="radio" value="2" name="gender" id="female" class="gender">女
+                    <input type="radio" value="3" name="gender" id="other" class="gender" >其他
+                {% endif %}
+
+            </td>
+        </tr>
+        <tr>
+            <td><label for="">出生日期</label></td>
+            <td id="born">
+
+                <select name="year" id="year" class="born">
+                    <option value="请选择">请选择</option>
+                    {% for year in year_list %}
+                        <option value="{{ year }}">{{ year }}</option>
+                    {% endfor %}
+                </select>&nbsp;年
+                <select name="month" id="month" class="born">
+                    <option value="请选择">请选择</option>
+                    {% for month in month_list %}
+                        <option value="{{ month }}">{{ month }}</option>
+                    {% endfor %}
+
+                </select>&nbsp;月
+                <select name="day" id="day" class="born">
+                    <option value="请选择">请选择</option>
+
+                </select>&nbsp;日
+            </td>
+        </tr>
+        <tr>
+            <td><label for="id_hometown">家乡</label></td>
+            <td>
+                <select name="province" class="province" id="ht-province">
+                    <option value="请选择">请选择</option>
+                </select>&nbsp;-
+                <select name="city" class="city" id="ht-city">
+                    <option value="请选择">请选择</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="id_location">现居住地</label></td>
+            <td>
+                <select name="province" class="province" id="lc-province">
+                    <option value="请选择">请选择</option>
+                </select>&nbsp;-
+                <select name="city" class="city" id="lc-city">
+                    <option value="请选择">请选择</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="id_marriage">婚恋状况</label></td>
+            <td>
+                <select name="marriage" id="id_marriage">
+                    <option value=""></option>
+                    <option value=1>单身</option>
+                    <option value=2>热恋中</option>
+                    <option value=3>订婚</option>
+                    <option value=4>已婚</option>
+                    <option value=5>离异</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="id_position">职位</label></td>
+            <td><input type="text" value="" class="form-control" name="position" id="id_position"></td>
+        </tr>
+        <tr>
+            <td><label for="id_company">单位/公司</label></td>
+            <td><input type="text" value="" class="form-control" name="company" id="id_company"></td>
+        </tr>
+        <tr>
+            <td><label for="id_work_situation">工作状况</label></td>
+            <td>
+                <select name="work_situation" id="id_work_situation">
+                    <option value=""></option>
+                    <option value=1>学生</option>
+                    <option value=2>已工作</option>
+                    <option value=3>待业中</option>
+                    <option value=4>其他</option>
+                </select>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="save_block">
+        <input type="submit" class="btn btn-primary" value="保存修改" id="save-btn">
+    </div>
+{% endblock %}
+
+
+{% block js %}
+    <script src="{% static 'js/profile_settings.js' %}"></script>
+
+{% endblock %}

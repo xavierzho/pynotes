@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/cc07f70e62.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+<button class="c1">点我</button>
+
+</body>
+<script>
+    $('.c1').click(function () {
+        $.ajax({
+            url:'http://127.0.0.1:8000/home/home/',
+            type:'post',
+            contentType:'application/json',
+            data:JSON.stringify({'name':'jones'}),
+            success:function (args) {
+                console.log(args)
+            }
+        })
+    })
+</script>
+</html>

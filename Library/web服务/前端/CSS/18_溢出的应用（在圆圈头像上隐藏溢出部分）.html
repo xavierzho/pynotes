@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>18_溢出的应用（在圆圈头像上隐藏溢出部分）</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #4e4e4e;
+        }
+        #d1 {
+            height: 200px;
+            width: 200px;
+            border-radius: 50%;
+            border: 5px solid #ffffff;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        #d1>img {
+            /*width: 100%;*/
+            height: 100%;
+            /*占标签的100%比例*/
+        }
+    </style>
+</head>
+<body>
+    <div id="d1">
+        <img src="葫芦娃.jpg" alt="">
+    </div>
+</body>
+</html>

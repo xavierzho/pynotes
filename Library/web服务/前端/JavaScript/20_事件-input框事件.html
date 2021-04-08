@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>input框事件</title>
+</head>
+<body>
+<input type="text" value="老板 去吗？" id="d1">
+<script>
+    let iEle = document.getElementById('d1')
+    //获取焦点
+    iEle.onfocus = function () {
+        //将input框内部的文本去除
+        iEle.value = ''
+    }
+    //失去焦点
+    iEle.onblur = function () {
+        //给input标签重新赋值
+        iEle.value = '没钱不去'
+    }
+</script>
+</body>
+</html>

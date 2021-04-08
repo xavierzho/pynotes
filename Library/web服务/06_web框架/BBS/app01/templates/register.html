@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/cc07f70e62.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<h1 class="text-center">注册</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <form id="form">
+                {% csrf_token %}
+                {% for form in form_obj %}
+                    <div class="form-group">
+                        <label for="{{ form.auto_id }}">{{ form.label }}</label>
+                        {{ form }}
+                        <span style="color: red" class="pull-right">{{ form.errors.0 }}</span>
+                    </div>
+                {% endfor %}
+
+                <div class="form-group">
+                    <label for="avatar">头像
+                        {% load static %}
+                        <img src="{% static 'img/default.jpg' %}" id="avatar_img" alt=""
+                             style="width: 80px; margin-left: 10px">
+                    </label>
+                    <input type="file" id="avatar" name="avatar" style="display: none;">
+
+                </div>
+
+                <input type="button" class="btn btn-primary pull-right" id="id_commit" value="注册">
+            </form>
+
+        </div>
+    </div>
+</div>
+<script>
+    $('#avatar').change(function () {
+        //文件阅读器对象
+        //1.先生成一个文件阅读器对象
+        let fileReaderObj = new FileReader();
+        //2.获取用户上传的头像文件
+        let fileObj = $(this)[0].files[0];
+        //3.将文件对象交给阅读区交给阅读器读取
+        fileReaderObj.readAsDataURL(fileObj); //异步操作，IO操作
+        //4.利用文件阅读器将文件展示到前端页面--修改src属性
+        //等待耗时操作执行完毕
+        fileReaderObj.onload = function () {
+            $('#avatar_img').attr('src', fileReaderObj.result)
+        };
+
+
+    });
+    $('#id_commit').click(function () {
+        //发送ajax请求  数据中既包括普通的键值对，也包括文件
+        let formDataObj = new FormData();
+        //1.添加普通的键值对
+        {#console.log($('#form').serializeArray()) //[{},{},{},...]#}
+        $.each($('#form').serializeArray(), function (index, obj) {
+            {#console.log(index, obj)#} // obj是自定义对象
+            formDataObj.append(obj.name, obj.value)
+        })
+        //2.添加文件
+        formDataObj.append('avatar', $('#avatar')[0].files[0]);
+        //3.发送ajax请求
+        $.ajax({
+            url: '',
+            type: 'post',
+            data: formDataObj,
+            //关键性参数
+            contentType: false,
+            processData: false,
+            success: function (args) {
+                if (args.code === 1000) {
+                    //跳转到登录页面
+                    window.location.href = args.url
+                } else {
+                    //如何将对应的提示展示到对应的input框
+                    //forms组件渲染的标签id值都是id_字段名
+                    $.each(args.msg, function (index, obj) {
+                        {#console.log(index, obj)#}
+                        let targetId = '#id_' + index;
+                        $(targetId).next().text(obj[0]).parent().addClass('has-error')
+                    })
+                }
+            }
+        })
+    })
+    //给所有的input框绑定获取焦点事件
+    $('input').focus(function () {
+        $(this).next().text('').parent().removeClass('has-error')
+    })
+</script>
+
+</body>
+</html>

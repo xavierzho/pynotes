@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+<body>
+<p id="d1">到家里就是度假酒店</p>
+<script>
+    //弹框2次，实际上是鼠标悬浮+鼠标移开
+    // $('#d1').hover(function () {
+    //     alert(123)
+    // })
+    $('#d1').hover(
+        function () {
+        alert('我来了')
+    },
+        function () {
+            alert('我又走了')
+        }
+    )
+</script>
+</body>
+</html>

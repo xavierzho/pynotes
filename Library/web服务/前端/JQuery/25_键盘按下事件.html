@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+<script>
+    $(window).keydown(function (event) {
+        console.log(event.keyCode)//每个键位都有一个键码
+        if (event.keyCode === 16) {
+            alert('你按了shift键盘')
+        }
+    })
+</script>
+</body>
+</html>

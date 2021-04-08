@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/cc07f70e62.js" crossorigin="anonymous"></script>
+</head>
+<body>
+{#<p>{{ n }}</p>#}
+{#<p>{{ f }}</p>#}
+{#<p>{{ s }}</p>#}
+{#<p>{{ d }}</p>#}
+{#<p>{{ b }}</p>#}
+{#<p>{{ t }}</p>#}
+{#<p>{{ se }}</p>#}
+{#<p>{{ l }}</p>#}
+{#<p>传递函数名会自动加括号，但是模板语法不支持给函数传额外的参数{{ func }}</p>#}
+{#<p>传类名的时候页会自动加括号调用（实例化）{{ MyClass }}</p>#}
+{#<p>内部能够自动判断当前的变量名是否可以加括号调用，如果可以就自动执行，针对的是函数名和类名</p>#}
+{#<p>{{ obj }}</p>#}
+{#<p>{{ obj.get_class }}</p>#}
+{#<p>{{ obj.get_func }}</p>#}
+{#<p>{{ obj.get_self }}</p>#}
+{#<p>{{ d.username}}</p>#}
+{#<p>{{ l.0}}</p>#}
+{#<p>{{ d.hobby.3.info }}</p>#}
+{#<h>过滤器</h>#}
+{#<p>统计长度{{ s | length }}</p>#}
+{#<p>默认值(第一个参数布尔值是True就展示第一个参数的值，否者展示冒号后面的值)：{{ b | default:'啥也不是' }}</p>#}
+{#<p>文件大小(自动计算)：{{ file_size|filesizeformat }}</p>#}
+{#<p>日期格式化(默认UTC)：{{ current_time | date:'Y-m-d H:i:s' }}</p>#}
+{#<p>切片操作（支持步长）：{{ l|slice:'0:4:2' }}</p>#}
+{#<p>切取字符操作(包含三个点)：{{ info|truncatechars:9 }}</p>#}
+{#<p>切取单词(不包含三个点，按照空格里来切){{ egl|truncatewords:9 }}</p>#}
+{#<p>移除特定的字符(就是replace())：{{ msg|cut:' ' }}</p>#}
+{#<p>拼接操作：{{ l|join:'$' }}</p>#}
+{#<p>加法运算(字符串拼接)：{{ n|add:10 }}</p>#}
+{#<p>加法运算(字符串拼接)：{{ s|add:msg }}</p>#}
+{#<p>取消转义(默认不转义):{{ hhh|safe }}</p>#}
+{#<p>{{ hhh2 }}</p>#}
+{#<h1>标签</h1>#}
+{#{% for foo in l %}#}
+{#    <p>{{ forloop }}</p>#}
+{#    <p>{{ foo }}</p>#}
+{##}
+{#{% endfor %}#}
+{##}
+{#{% if b %}#}
+{#    <p>baby</p>#}
+{#{% elif s %}#}
+{#    <p>老baby</p>#}
+{#{% else %}#}
+{#    <p>都来把</p>#}
+{#{% endif %}#}
+
+{#{% for foo in ll %}#}
+{#    {% if forloop.first %}#}
+{#        <p>这是我的第一次</p>#}
+{#        {% elif forloop.last %}#}
+{#        <p>这是我的最后一次</p>#}
+{#        {% else %}#}
+{#        <p>{{ foo }}</p>#}
+{#    {% endif %}#}
+{#    {% empty %}#}
+{#        <p>for 循环的可迭代对象内部没有元素，没法循环</p>#}
+{#{% endfor %}#}
+{#{% for foo in d.keys %}#}
+{#    <p>{{ foo }}  </p>#}
+{#{% endfor %}#}
+{##}
+{#{% for foo in d.values %}#}
+{#<p>{{ foo1 }}</p>#}
+{#{% endfor %}#}
+{##}
+{##}
+{#{% for foo in d.items %}#}
+{#    <o>{{ foo }}</o>#}
+{#{% endfor %}#}
+{#{% with  d.hobby.3.info  as nb %}#}
+{#    <p>{{ nb }}</p>#}
+{#    在with语法内可以通过as 后面的别名快速使用前面非常复杂的表达式#}
+{#{% endwith %}#}
+{#<h1>自定义的使用()</h1>#}
+{% load mytags %}
+{#标签的参数用逗号隔开#}
+{#<p>{% plus 'jones' 22 '123' '789' %}</p>#}
+{#<p>{{ n|baby:666 }}</p>#}
+{% left_menu 5 %}
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    // 水仙花数
+    <script>
+        for (let i = 100; i < 1000; i++) {
+            //1、每一位取出
+            let a = i % 10;
+            let b = parseInt(i / 10) % 10;
+            let c = parseInt(i / 100);
+            //2.立方和
+            let sum = Math.pow(a, 3) + Math.pow(b, 3) + Math.pow(c, 3);
+            if (i == sum) {
+                document.write(i + '<br/>');
+            }
+        }
+    </script>
+    // 最大公约数：能够同时被两个数整除的最小数
+    <script>
+        /*
+            思路：
+            先找出两个数中最小的那个数
+            最大公约数，最小是1,最大只能2个数中的较小数
+
+        */
+        let num1 = 12;
+        let num2 = 6;
+        let min = num1 > num2 ? num2 : num1;
+        while (1) {
+            if (num1 % min === 0 && num2 % min === 0) {
+                break;
+            }
+            min--;
+        }
+        alert('两个数最大公约数：' + min);
+    </script>
+    // 最小公倍数:最大两个数的积，最小两个数中的叫大叔
+    <script>
+        let num3 = 5;
+        let num4 = 6;
+        let max = num1 > num2 ? num1 : num2;
+        while (1) {
+            if (max % num1 === 0 && max % num2 === 0) {
+                break;
+            }
+            max++;
+        }
+        alert("两个数的最小公倍数：" + max)
+    </script>
+    // 回文数
+    <script>
+        for (let i = 10000; i < 100000; i++) {
+            let a = i % 10;
+            let b = parseInt(i / 10) % 10;
+            let c = parseInt(i / 1000) % 10;
+            let d = parseInt(i / 10000);
+            if (a === d && b === c) {
+                document.write(i + "<br/>");
+            }
+        }
+    </script>
+    <script>
+        let year = 2000;
+        let month = 8;
+        let date = 8;
+        let sum = 0;
+        switch (month) {
+            case 12:
+                sum += 30;
+                break;
+            case 11:
+                sum += 31;
+                break;
+            case 10:
+                sum += 30;
+                break;
+            case 9:
+                sum += 31;
+                break;
+            case 8:
+                sum += 31;
+                break;
+            case 7:
+                sum += 30;
+                break;
+            case 6:
+                sum += 31;
+                break;
+            case 5:
+                sum += 30;
+                break;
+            case 4:
+                sum += 31;
+                break;
+            case 3:
+                sum += 28;
+                if (year % 4 === 0 && year % 100 !== 0 || year % 400 === 0) {
+                    sum += 1
+
+                }
+                break;
+            case 2:
+
+                sum += 31;
+                break;
+            case 1:
+                sum += date;
+                break;
+            default:
+                alert("error");
+                break;
+        }
+        alert('这是第' + sum + '天');
+        // var week = parseInt(sum / 7) + 1;
+        let week = Math.ceil(sum / 7);
+        alert('这是' + week + "周");
+
+    </script>
+    <script>
+        let arr = [1, 10, 20, 25, 5];
+        arr.sort(function (value1, value2) {
+            return value1 - value2;
+        })
+        alert(arr);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

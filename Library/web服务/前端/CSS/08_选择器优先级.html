@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>08_选择器优先级</title>
+
+    <style>
+        /*
+        1.选择器相同 书写顺序不同
+            就近原则:谁离标签更近听谁的
+        2.选择器不同,精确度越高,越有效
+           行内选择器 > id选择器 > class选择器> element选择器
+        */
+        #d1 {
+            color: aqua;
+        }
+        .c1 {
+            color: orange;
+        }
+        p {
+            color: red;
+        }
+    </style>
+    <link rel="stylesheet" href="01_mycss.css">
+</head>
+<body>
+<p id="d1" class="c1" style="color:blue;">jones果然很识趣,有前途!</p>
+</body>
+</html>

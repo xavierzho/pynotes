@@ -1,0 +1,33 @@
+    a {
+        color: black;
+    }
+    a:hover {
+        text-decoration: none;
+    }
+    ul li {
+        list-style-type: none;
+    }
+    ul {
+        display: block;
+        list-style-type: disc;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        padding-inline-start: 40px;
+        margin-bottom: 10px;
+    }
+    .menu-item {
+        position: relative;
+        padding: 8px 16px;
+        border: 1px grey solid;
+        display: block;
+        border-radius: 6px;
+        text-align: center;
+    }
+    .col-md-3,.col-md-9 {
+        margin-top: 50px;
+    }
+    .active {
+        background-color: rgba(128,128,128,0.5);
+    }

@@ -1,0 +1,131 @@
+<!--pages/index/index.wxml-->
+<view>实例一</view>
+<view class="menu-1">
+  <view class="item">
+    <image src="/static/img/灵魂莲华 阿狸.jpg"></image>
+
+  </view>
+  <view class="item">
+    <image src="/static/img/灵魂莲华 阿狸.jpg"></image>
+
+  </view>
+  <view class="item">
+    <image src="/static/img/灵魂莲华 阿狸.jpg"></image>
+
+  </view>
+  <view class="item">
+    <image src="/static/img/灵魂莲华 阿狸.jpg"></image>
+
+  </view>
+  <view class="item">
+    <image src="/static/img/灵魂莲华 阿狸.jpg"></image>
+
+  </view>
+  <view class="item">
+    <image src="/static/img/灵魂莲华 阿狸.jpg"></image>
+
+  </view>
+</view>
+<view>实例二</view>
+<view class="menu-2">
+  <view class="item">
+    <image src="/static/img/灵魂莲华 阿狸.jpg"></image>
+    <text>精品1</text>
+  </view>
+  <view class="item">
+    <image src="/static/img/灵魂莲华 阿狸.jpg"></image>
+    <text>精品2</text>
+  </view>
+  <view class="item">
+    <image src="/static/img/灵魂莲华 阿狸.jpg"></image>
+    <text>精品3</text>
+  </view>
+  <view class="item">
+    <image src="/static/img/灵魂莲华 阿狸.jpg"></image>
+    <text>精品4</text>
+  </view>
+  <view class="item">
+    <image src="/static/img/灵魂莲华 阿狸.jpg"></image>
+    <text>精品4</text>
+  </view>
+  <view class="item">
+    <image src="/static/img/灵魂莲华 阿狸.jpg"></image>
+    <text>精品4</text>
+  </view>
+</view>
+<view>实例三</view>
+
+<view class="action">
+  <view class="item"> 
+    <view class="title">第一场 拍卖xxxx的物件</view>
+    <view class="tips">
+      <view class="status">2020-01-01</view>
+      <view class="count">1111次围观</view>
+    </view>
+    <view class="big">
+      <image src="/static/img/九尾妖狐/九尾妖狐.jpg"></image>
+    </view>
+    <view class="small">
+      <image src="/static/img/九尾妖狐/暗影妖狐 阿狸.jpg"></image>
+      <image src="/static/img/九尾妖狐/电玩女神 阿狸.jpg"></image>
+      <image src="/static/img/九尾妖狐/风纪委员 阿狸.jpg"></image>
+      <image src="/static/img/九尾妖狐/高丽风情 阿狸.jpg"></image>
+      <image src="/static/img/九尾妖狐/灵魂莲华 阿狸.jpg"></image>
+      <image src="/static/img/九尾妖狐/偶像歌手 阿狸.jpg"></image> 
+    </view>
+  </view>
+  <view class="item"> 
+    <view class="title">第一场 拍卖xxxx的物件</view>
+    <view class="tips">
+      <view class="status">2020-01-01</view>
+      <view class="count">1111次围观</view>
+    </view>
+    <view class="big">
+      <image src="/static/img/九尾妖狐/九尾妖狐.jpg"></image>
+    </view>
+    <view class="small">
+      <image src="/static/img/九尾妖狐/暗影妖狐 阿狸.jpg"></image>
+      <image src="/static/img/九尾妖狐/电玩女神 阿狸.jpg"></image>
+      <image src="/static/img/九尾妖狐/风纪委员 阿狸.jpg"></image>
+      <image src="/static/img/九尾妖狐/高丽风情 阿狸.jpg"></image>
+      <image src="/static/img/九尾妖狐/灵魂莲华 阿狸.jpg"></image>
+      <image src="/static/img/九尾妖狐/偶像歌手 阿狸.jpg"></image> 
+    </view>
+  </view>
+  <view class="item"> 
+    <view class="title">第一场 拍卖xxxx的物件</view>
+    <view class="tips">
+      <view class="status">2020-01-01</view>
+      <view class="count">1111次围观</view>
+    </view>
+    <view class="big">
+      <image src="/static/img/九尾妖狐/九尾妖狐.jpg"></image>
+    </view>
+    <view class="small">
+      <image src="/static/img/九尾妖狐/暗影妖狐 阿狸.jpg"></image>
+      <image src="/static/img/九尾妖狐/电玩女神 阿狸.jpg"></image>
+      <image src="/static/img/九尾妖狐/风纪委员 阿狸.jpg"></image>
+      <image src="/static/img/九尾妖狐/高丽风情 阿狸.jpg"></image>
+      <image src="/static/img/九尾妖狐/灵魂莲华 阿狸.jpg"></image>
+      <image src="/static/img/九尾妖狐/偶像歌手 阿狸.jpg"></image> 
+    </view>
+  </view>
+  <view class="item"> 
+    <view class="title">第一场 拍卖xxxx的物件</view>
+    <view class="tips">
+      <view class="status">2020-01-01</view>
+      <view class="count">1111次围观</view>
+    </view>
+    <view class="big">
+      <image src="/static/img/九尾妖狐/九尾妖狐.jpg"></image>
+    </view>
+    <view class="small">
+      <image src="/static/img/九尾妖狐/暗影妖狐 阿狸.jpg"></image>
+      <image src="/static/img/九尾妖狐/电玩女神 阿狸.jpg"></image>
+      <image src="/static/img/九尾妖狐/风纪委员 阿狸.jpg"></image>
+      <image src="/static/img/九尾妖狐/高丽风情 阿狸.jpg"></image>
+      <image src="/static/img/九尾妖狐/灵魂莲华 阿狸.jpg"></image>
+      <image src="/static/img/九尾妖狐/偶像歌手 阿狸.jpg"></image> 
+    </view>
+  </view>
+</view>

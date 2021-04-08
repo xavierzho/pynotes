@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        #d1 {
+            height: 50px;
+            width: 100px;
+            background-color: orange;
+            border: black solid 2px;
+        }
+    </style>
+</head>
+<body>
+<button id="d1">屠龙宝刀点击就送</button>
+<button id='d2'></button>
+<script>
+    $('#d1').on('click',function () {
+        //console.log(this)//this指代的永远是被操作的标签对象
+        $(this).clone(true).insertAfter($('body'))//默认克隆html和css，不克隆事件。添加true之后才能克隆事件
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <div id="d1">div
+        <p id="d2">div>p
+            <span id="d3">span
+            </span>
+        </p>
+    </div>
+
+    <script>
+        $('#d1').click(function () {
+            alert('div')
+        })
+        $('#d2').click(function () {
+            alert('p')
+
+        })
+        $('#d3').click(function (e) {
+            alert('span')
+            // return false
+            e.stopPropagation()
+        })
+    </script>
+</body>
+</html>

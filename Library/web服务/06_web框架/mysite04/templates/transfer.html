@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/cc07f70e62.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<h1>我是个正经的网站</h1>
+<form action="{% url 'app03_csrf' %}" method="post">
+{#    {% csrf_token %}#}
+    <p>username:<input type="text" name="username"></p>
+    <p>target_user:<input type="text" name="target_user"></p>
+    <p>money:<input type="text" name="money"></p>
+    <input type="submit">
+    
+</form>
+<button id="d1">ajax请求</button>
+{% load static %}
+<script src="{% static 'js/mysetup.js' %}"></script>
+<script>
+    $('#d1').on('click', function () {
+        $.ajax({
+            url:'',
+            type:'post',
+            //第一种，利用标签查找获取页面上的随机字符串
+            {#data:{'username': 'jones', 'csrfmiddlewaretoken':$('[name=csrfmiddlewaretoken]').val()},#}
+            //第二种：利用模板语法
+            {#data:{'username': 'jones', 'csrfmiddlewaretoken':'{{csrf_token}}'},#}
+            //第三种：通用方式,直接引入官方的js代码，并应用到自己的html页面上
+            data:{'username': 'json'},
+            success:function () {
+
+            }
+        })
+    })
+</script>
+</body>
+</html>

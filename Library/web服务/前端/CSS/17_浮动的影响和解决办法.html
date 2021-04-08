@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>17_浮动的影响和解决办法</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        #d1 {
+            border: 3px solid black;
+        }
+        #d2 {
+            height: 100px;
+            width: 100px;
+            background-color: red;
+            float: left;
+        }
+        #d3 {
+            height: 100px;
+            width: 100px;
+            background-color: greenyellow;
+            float: left;
+        }
+        #d4 {
+            /*height: 100px;*/
+            clear: left; /*该标签的左边（包括地面和空中）不能有浮动的元素*/
+
+        }
+        .clearfix:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <div id="d1" class="clearfix">
+        <div id="d2"></div>
+        <div id="d3"></div>
+<!--        <div id="d4"></div>-->
+    </div>
+</body>
+</html>

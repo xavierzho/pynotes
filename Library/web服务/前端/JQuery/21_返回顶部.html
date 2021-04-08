@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        .hide {
+            display: none;
+        }
+        #d1 {
+            position: fixed;
+            background-color: orange;
+            right: 20px;
+            bottom: 20px;
+            height: 50px;
+            width: 50px;
+        }
+    </style>
+</head>
+<body>
+<a href="" id="d1"></a>
+<div style="height: 500px;background-color: red"></div>
+<div style="height: 500px;background-color: yellow"></div>
+<div style="height: 500px;background-color: blue"></div>
+<div style="height: 500px;background-color: green"></div>
+<a href="#d1" id="d2" class="hide">回到顶部</a>
+<script>
+    $(window).scroll(function () {
+        if($(window).scrollTop() > 100){
+            $('#d1').removeClass('hide')
+        }else{
+            $('#d1').addClass('hide')
+        }
+    })
+</script>
+</body>
+</html>

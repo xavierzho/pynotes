@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>省市联动</title>
+</head>
+<body>
+<select name="" id="d1">
+    <option value="">--请选择省份--</option>
+</select>
+<select name="" id="d2">
+    <option value="">--请选择市/区--</option>
+</select>
+<script>
+    //模拟省市数据
+    let proEle = document.getElementById('d1')
+    let cityEle = document.getElementById('d2')
+    let data = {
+        '河北省':['廊坊市','邯郸市','唐山'],
+        '北京':['朝阳区','海淀区'],
+        '广东省':['广州市','深圳市'],
+        '上海市':['浦东新区','静安区','黄浦区']
+    }
+    //for循环获取省份
+    for (let key in data) {
+        // console.log(data[key])
+        //将省信息做成option标签,添加到第一个select框中
+        //创建option标签
+        let opEle = document.createElement('option')
+        //设置文本
+        opEle.innerText = key
+        //设置value
+        opEle.value = key
+        //将创建好的option标签添加到第一个option 标签中
+        proEle.appendChild(opEle)
+    }
+    //文本域变化事件 change事件
+    proEle.onchange = function () {
+        //获取到用户选择的省份
+        let currentPro = proEle.value
+        // console.log(currentPro)
+        //获取对应市的信息
+        let currentCityList = data[currentPro]
+        //清空select中的所有option
+        cityEle.innerHTML = '<option value="">--请选择市/区--</option>'
+        //for循环所有的市,渲染到第二个select框中
+        for (let i=0;i<currentCityList.length;i++) {
+            let currentCity = currentCityList[i]
+            let opEle = document.createElement('option')
+            opEle.innerText = currentCity
+            opEle.value = currentCity
+            cityEle.appendChild(opEle)
+        }
+    }
+
+</script>
+</body>
+</html>

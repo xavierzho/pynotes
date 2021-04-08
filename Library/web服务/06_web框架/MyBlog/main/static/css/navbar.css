@@ -1,0 +1,68 @@
+/*通用设置*/
+a {
+    text-decoration: none;
+}
+.clearfix:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+/*导航条背景颜色*/
+.navbar-default {
+    background-color: white;
+    border-color: white;
+}
+/*消除列表前面的点*/
+.user {
+    list-style: none;
+    margin-top: 10px;
+}
+/*写文章按钮*/
+nav .write-btn {
+    float: right;
+    width: 100px;
+    height: 40px;
+    line-height: 24px;
+    margin: 8px 12px 0;
+    border-radius: 20px;
+    font-size: 15px;
+    color: #fff;
+    background-color: #ff5900;
+}
+
+/*搜索框*/
+nav form .search-input {
+    margin-top: 8px;
+    padding: 0 40px 0 20px;
+    width: 160px;
+    height: 38px;
+    font-size: 14px;
+    border: 1px solid #eeeeee;
+    border-radius: 40px;
+    background-color: #eeeeee;
+}
+nav .navbar-nav li {
+    margin-right: 10px;
+}
+nav .navbar-nav .search {
+    padding-left: 15px;
+}
+nav form .search-btn {
+    position: absolute;
+    top: 18px;
+    right: 5px;
+    width: 25px;
+    height: 30px!important;
+    text-align: center;
+}
+
+/*头像*/
+.user li a img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+/*注册按钮*/
+#reg {
+    border:2px solid black;
+}

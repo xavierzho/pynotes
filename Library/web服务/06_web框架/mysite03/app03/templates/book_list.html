@@ -1,0 +1,86 @@
+{% extends 'home.html' %}
+{% block css %}
+    <script src="/static/bootstrap-sweetaler/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="/static/bootstrap-sweetaler/dist/sweetalert.css">
+{% endblock %}
+
+{% block content %}
+    <a href="{% url 'app03_add' %}" class="btn-success btn btn-sm">添加</a>
+    <br>
+    <table class="table-hover table-striped table">
+        <thead>
+            <tr>
+                <th>序号</th>
+            <th>ID</th>
+            <th>书名</th>
+            <th>价格</th>
+            <th>出版日期</th>
+            <th>出版社</th>
+            <th>作者</th>
+            <th>操作</th>
+            </tr>
+        </thead>
+    <tbody>
+
+        {% for book_obj in book_queryset %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ book_obj.pk }}</td>
+                <td>{{ book_obj.title }}</td>
+                <td>{{ book_obj.price }}</td>
+                <td>{{ book_obj.publish_date|date:'Y-m-d' }}</td>
+                <td>{{ book_obj.publish.name }}</td>
+                <td>
+                    {% for author_obj in book_obj.author.all %}
+                        {% if forloop.last %}
+                            {{ author_obj.name }}
+                            {% else %}
+                            {{ author_obj.name }}、
+                        {% endif %}
+                    {% endfor %}
+
+                </td>
+                <td>
+                    <a href="{% url 'app03_edit' book_obj.id %}" class="btn btn-primary btn-xs">编辑</a>
+                    <a href="{% url 'app03_del'  book_obj.id %}" class="btn btn-danger btn-xs" id="del_book">删除</a>
+                </td>
+            </tr>
+        {% endfor %}
+
+
+    </tbody>
+    </table>
+{% endblock %}
+
+{% block js %}
+    <script>
+        $("#del_book").click(function () {
+                swal({
+                    title: "你确定要删除吗？",
+                    text: "删除可就找不回来了哦！",
+                    type: "warning",
+                    showCancelButton: true,  // 是否显示取消按钮
+                    confirmButtonClass: "btn-danger",  // 确认按钮的样式类
+                    confirmButtonText: "删除",  // 确认按钮文本
+                    cancelButtonText: "取消",  // 取消按钮文本
+                    closeOnConfirm: false,  // 点击确认按钮不关闭弹框
+                    showLoaderOnConfirm: true  // 显示正在删除的动画效果
+                },
+                function () {
+                    let deleteId = 2;
+                    $.ajax({
+                        url: "/app03/book/del/",
+                        type: "post",
+                        data: {"id": deleteId},
+                        success: function (data) {
+                            if (data.code === 0) {
+                                swal("删除成功!", "你可以准备跑路了！", "success");
+                            } else {
+                                swal("删除失败", "你可以再尝试一下！", "error")
+                            }
+                        }
+                    })
+                });
+    })
+    </script>
+{% endblock %}

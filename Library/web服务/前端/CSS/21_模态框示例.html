@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>21_模态框示例</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        .cover {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            top: 0;
+            background-color: #7f7f7f;
+            z-index: 99;
+        }
+        .modal {
+            background-color: white;
+            height: 400px;
+            width: 400px;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            z-index: 100;
+            margin-left: -200px; /*宽度的一半*/
+            margin-top: -200px;  /*高度的一半*/
+        }
+    </style>
+</head>
+<body>
+    <div>这是底层页面</div>
+    <div class="cover"></div>
+    <div class="modal">
+        <h1>登录页面</h1>
+        <p>username: <input type="text"></p>
+        <p>password: <input type="text"></p>
+        <button>登录</button>
+</div>
+</body>
+</html>

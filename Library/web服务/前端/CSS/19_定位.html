@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>19_定位</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        #d1 {
+            height: 100px;
+            width: 100px;
+            background-color: red;
+            left: 50px;  /*从左往右 如果是负数 方向相反*/
+            top: 50px;  /*从上往下 如果是负数 方向相反*/
+            /*position: static; 默认是static无法修改位置*/
+            position: relative;
+            /*相对定位 标签由static变为relative它的
+            性质就从没有定位的标签变为已经定位过的标签
+            虽然没有动，但性质也改变了*/
+
+        }
+        #d2 {
+            height: 100px;
+            width: 200px;
+            background-color: red;
+
+        }
+        #d3 {
+            height: 200px;
+            width: 400px;
+            background-color: yellowgreen;
+            position: absolute;
+            left: 200px;
+            top: 100px;
+        }
+        #d4 {
+            position: fixed;  /*写了fixed定位之后，定位就是i一句浏览器窗口*/
+            bottom: 10px;
+            right: 20px;
+
+            height: 50px;
+            width: 100px;
+            background-color: white;
+            border: 3px solid black;
+        }
+    </style>
+</head>
+<body>
+<!--    <div id="d1"></div>-->
+<!--<div id="d2">asdasdasd-->
+<!--    <div id="d3"></div>-->
+<!--</div>-->
+<div style="height: 500px;background-color: red"></div>
+<div style="height: 500px;background-color: greenyellow"></div>
+<div style="height: 500px;background-color: blue"></div>
+<div id="d4">回到顶部</div>
+</body>
+</html>

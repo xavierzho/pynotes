@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件-开关灯</title>
+    <style>
+        #d1 {
+            height: 400px;
+            width: 400px;
+            border-radius: 50%;
+        }
+        .bg_green {
+            background-color: greenyellow;
+        }
+        .bg_red {
+            background-color: red;
+        }
+    </style>
+
+</head>
+<body>
+<div id="d1" class="c1 bg_green bg_red"></div>
+<button id="d2">变色</button>
+<script>
+    let btnEle = document.getElementById('d2')
+    let divEle = document.getElementById('d1')
+    btnEle.onclick = function () { //bind click action
+        //modify tag div class attribute
+        divEle.classList.toggle('bg_red')
+    }
+</script>
+</body>
+</html>

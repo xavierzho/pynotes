@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        for(let i = 1; i <= 9; i++){
+            for(let j = 1 ; j <= i; j++){
+                document.write(j + "X" + i + "=" + (i * j) +"&nbsp;");
+
+            }
+            document.write('<br/>');
+        }
+    </script>
+    <script>
+        for(let i = 1; i <= 5; i++){
+            for(let k = 1; k <= 5 - i; k++){
+                document.write("😊");
+            }
+            for(let j = 1 ; j <= i; j++){
+                document.write("⭕");
+
+            }
+            document.write('<br/>');
+        }
+    </script>
+    <script>
+        let water = 15;
+        let count = 5;
+        while(water < 50){
+            count++;
+            water += 5;
+        }
+        alert("一共跳了"+ count + "次水")
+    </script>
+    <script>
+        let sum = 7;
+        let isYes = false; // 是质数
+        for(let i = 2; i < sum; i++){
+            isYes = true;
+            if(!isYes){
+                break;
+            }
+        }
+        if(isYes){
+            alert(num + ',这是一个合数');
+        }else{
+            alert(num + '，这是一个质数');
+        }
+
+    </script>
+    <script>
+        let num = 1;
+        let sum = 0;
+        for(let i = 0; i < 64; i++){
+            sum += num;
+            num *= 2;
+        }
+        // alert(sum)
+    </script>
+</head>
+<body>
+
+</body>
+</html>

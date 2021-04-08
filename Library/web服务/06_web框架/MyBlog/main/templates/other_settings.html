@@ -1,0 +1,16 @@
+{% extends 'account_settings.html' %}
+<style>
+    #title {
+        color: red;
+    }
+</style>
+
+{% block content %}
+    <div class="main">
+    <h1 id="title">删除账号</h1>
+    <p>您可以转移发布过的文章，然后再注销</p>
+    <span><input type="button" class="btn-primary btn" value="打包所有文章"></span>
+    </div>
+
+    <input type="button" class="btn btn-danger" value="注销账户">
+{% endblock %}

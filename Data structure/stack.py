@@ -39,4 +39,4 @@ def brace_match(s: str):
 
 print(brace_match('[{()[]()[{}]{}}]'))
 print(brace_match('[{()}]'))
-print(brace_match('[]'))
+print(brace_match('[{]'))

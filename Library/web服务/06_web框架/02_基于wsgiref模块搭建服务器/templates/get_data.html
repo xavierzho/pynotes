@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/cc07f70e62.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <h1 class="text-center"> 招聘信息</h1>
+            <table class="table table-hover table-striped">
+                <thead>
+                <th>ID</th>
+                <th>CategoryName</th>
+                <th>BGName</th>
+                <th>CountryName</th>
+                <th>LastUpdateTime</th>
+                <th>LocationName</th>
+                <th>PostURL</th>
+                <th>ProductName</th>
+                <th>RecruitPostName</th>
+                <th>Responsibility</th>
+                </thead>
+                <tbody>
+<!--                    [{},{},{}]-->
+                    {% for user_dict in user %}
+                        <tr>
+                            <td>{{user_dict.ID}}</td>
+                            <td>{{user_dict.CategoryName}}</td>
+                            <td>{{user_dict.BGName}}</td>
+                            <td>{{user_dict.CountryName}}</td>
+                            <td>{{user_dict.LastUpdateTime}}</td>
+                            <td>{{user_dict.LocationName}}</td>
+                            <td>{{user_dict.PostURL}}</td>
+                            <td>{{user_dict.ProductName}}</td>
+                            <td>{{user_dict.RecruitPostName}}</td>
+                            <td>{{user_dict.Responsibility}}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

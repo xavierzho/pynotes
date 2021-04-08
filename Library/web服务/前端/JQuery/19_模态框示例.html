@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        .cover {
+            position: fixed;
+            top:0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(128,128,128,0.4);
+            z-index: 99;
+        }
+        .modal {
+            position: fixed;
+            height: 400px;
+            width: 300px;
+            background-color: white;
+            top: 50%;
+            left: 50%;
+            margin-left: -150px;
+            margin-top: -200px;
+            z-index: 100;
+        }
+        .hide {
+            display: none;
+        }
+        #d6 {
+            margin-left: auto;
+            margin-top: 50px;
+        }
+        #d7,#d5,#d2 {
+            margin-left: auto;
+        }
+
+    </style>
+</head>
+<body>
+<div>我是最底下内容</div>
+<button id="d1">模态框弹出</button>
+<div class="cover hide"></div>
+<div class="modal hide">
+    <p id="d6">username: <input type="text" id="d3"></p>
+    <p id="d7">password: <input type="password" id="d4"></p>
+    <input type="button" value="登录" id="d5">
+    <input type="button" value="取消" id="d2">
+</div>
+<script>
+    let $coverEle = $('.cover')
+    let $modalEle = $('.modal')
+    $('#d1').on('click', function () {
+        //将两个div标签的hide类属性移除
+        $coverEle.removeClass('hide')
+        $modalEle.removeClass('hide')
+
+    })
+    //将hide类属性添加回来
+    $('#d2').click(function () {
+        $coverEle.addClass('hide')
+        $modalEle.addClass('hide')
+    })
+</script>
+</body>
+</html>

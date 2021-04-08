@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <button>是兄弟就来干我</button>
+    <script>
+        //给所有的button标签绑定点击事件
+        // $('button').click(function () { //无法影响到动态创建的标签
+        //     alert(123)
+        // })
+        $('body').on('click','button', function () {//body可以是某个div标签
+            alert(123) //在指定的范围内，将事件委托给某个标签，无论该标签是动态创建的还是原来的都能影响
+        })
+    </script>
+
+</body>
+</html>

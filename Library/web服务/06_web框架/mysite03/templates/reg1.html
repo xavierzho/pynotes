@@ -1,0 +1,34 @@
+{% extends 'home.html' %}
+{% block css %}
+    <style>
+        h1 {
+            color: yellow;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <h1 class="text-center">注册页</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <form action="" method="post">
+                <p class="text-center"><input type="text" placeholder="用户名" name="username" class="form-control"></p>
+                <p class="text-center"><input type="password" placeholder="密码" name="password" class="form-control"></p>
+                <p class="text-center"><input type="password" placeholder="再次输入密码" class="form-control"></p>
+
+                <input type="submit" value="注册" class="btn btn-info btn-block" onclick="location.href='/login/'">
+            </form>
+        </div>
+    </div>
+</div>
+<p> 模板的导入</p>
+    {% include 'wasai.html' %}
+{% endblock %}
+
+
+{% block js %}
+    <script>
+    alert('注册')
+    </script>
+{% endblock %}

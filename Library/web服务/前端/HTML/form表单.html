@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>注册页面</h1>
+    <form action="http://127.0.0.1:5000/index/" method="post" enctype="multipart/form-data">
+        <p><label for="user_name">username:<input type="text" id="user_name" name="username" placeholder="用户名/Email/手机号码" disabled></label></p>
+        <p><label for="password">password:<input type="password" name="password" id="password"></label></p>
+        <p>gender:
+            <input type="radio" name="gender" value="Male">男
+            <input type="radio" name="gender" value="Female">女
+            <input type="radio" name="gender" checked="checked" value="Others">其他
+        </p>
+        <p>birthday<input type="date" name="birthday" value=""></p>
+        <p>hobby:
+            <input type="checkbox" name="hobby" value="read">read
+            <input type="checkbox" name="hobby" value="JDB">JDB
+            <input type="checkbox" name="hobby" value="DBJ">DBJ
+        </p>
+        <p>province
+            <select name="province" id="">
+                <option value="" selected>请选择</option>
+                <option value="上海">上海</option>
+                <option value="广州">广州</option>
+                <option value="深圳">深圳</option>
+                <option value="北京">北京</option>
+            </select>
+        </p>
+<!--        <p>-->
+<!--            <select name="" id="" multiple>-->
+<!--                <option value="">1231</option>-->
+<!--                <option value="">12313</option>-->
+<!--            </select>-->
+<!--        </p>-->
+        <p>
+            <input type="file" name="myfile">
+        </p>
+        <p>自我介绍：
+            <textarea name="myself" id="" cols="30" rows="10" maxlength="150" value=""></textarea>
+        </p>
+<!--        <p>-->
+<!--            <select name="" id="">-->
+<!--                <optgroup label="广州">-->
+<!--                    <option value="">天河区</option>-->
+<!--                    <option value="">番禺区</option>-->
+<!--                </optgroup>-->
+<!--                <optgroup label="北京">-->
+<!--                    <option value="">浦东</option>-->
+<!--                    <option value="">黄浦</option>-->
+<!--                    <option value="">青浦</option>-->
+<!--                </optgroup>-->
+<!--            </select>-->
+<!--        </p>-->
+        <input type="submit" value="注册">
+        <input type="button" value="登录">
+        <input type="reset" value="重置">
+        <button>点我</button>
+    </form>
+</body>
+</html>

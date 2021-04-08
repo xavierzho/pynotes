@@ -1,0 +1,65 @@
+/* pages/index/index.wxss */
+.c1 {
+  color: red;
+}
+.menu-1 image, .menu-2 image {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+.menu-1 {
+  display: flex;
+  /* 规定主轴方向 */
+  /* 规定主轴的水平方向：row */
+  /* 规定主轴的垂直方向：column*/
+  flex-direction: row;
+   /*元素在主轴方向如何展示：center居中、space-around平均分布、flex-start居左、space-between*/
+  justify-content: space-around;
+  /*元素在副轴方向如何展示：center居中、space-around平均分布、flex-start居左、space-between*/
+  align-items: center;
+}
+.menu-1 .item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.menu-2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.menu-2 .item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.action .item {
+  border: 1rpx solid #8c8c8c;
+  padding-bottom: 20rpx;
+}
+.action .item .title{
+  font-size: 50rpx;
+  font-weight: 600rpx;
+}
+.action .item .tips{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 30rpx;
+  color: #8c8c8c;
+}
+
+/* .action .item .big image{
+  width: 100%;
+  height: 100%;
+} */
+.action .item .small{
+  display: flex;
+  flex-direction: row;
+  justify-self: flex-start;
+}
+.action .item .small image {
+  height: 100rpx;
+  width: 100rpx;
+  padding-right: 20rpx;
+}

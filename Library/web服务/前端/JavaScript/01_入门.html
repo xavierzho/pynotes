@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Document</title>
+
+    <script type = 'text/javascript'>
+        /*
+        ECMA
+
+        javascript组成
+            1、ECMAScript
+            2、DOM 文档
+            3、BOM 浏览器
+
+        【注】所有js代码在一个script标签中编写
+            属性：
+                1.type = ’text/javascript‘ 声明文本格式
+                2.src = ’demo.js' 引入外部的.js文件
+            注意点：
+                1.可以有多个script标签，多个script标签是自上而下顺序执行
+                2.一个script标签只能专心做一个事情
+        页面输出内容：
+        1.alert() 当前页面弹出一个警告框，警告框中显示要显示的内容
+        2.document.write('这是一些内容')
+            注意项：<1>标签的解析
+                   <2>转义字符
+                   &lt;代表<
+                   &gt;代表>
+
+        3.console.log('这是一些内容')
+                在浏览器调试面板控制台输出内容
+                用于代码调试
+        */
+        /*
+        var 声明变量
+
+        */
+        var num = null;
+        num = 200;
+        alert(num)
+
+    </script>
+    <script src="demo.js">
+    </script>
+    <script>
+        document.write('&lt;h1>Hello world&lt;/h1>');
+    </script>
+    <script>
+        // console.log("zxq");
+        let year = 2020;
+        if(year % 4 == 0 && year && 100 != 0 ||year%400 == 0){
+            alert('这是个闰年：'+ year);
+        }else{
+            alert('这是个平年：'+ year)
+            }
+    </script>
+    <script>
+        let y = null;
+        let x = 10;
+        if (x < 1){
+            y = x;
+        }else if(x >= 1 && x < 10){
+            y = 2 * x + 1;s
+        }else{
+            y = 5 * x -17;
+        }
+        alert("当x的值是："+ x +'，y的值是：' + y)
+
+    </script>
+    <script>
+        let score = 90;
+        if(score > 85){
+            alert("优秀");
+            if(score > 95 && score <= 100){
+                alert('奖励1000元')
+            }else if(score > 90 && score <= 95){
+                alert('奖励800元')
+            }else{
+                alert("奖励300元")
+            }
+        }else if(score >= 75 && score <= 85){
+            alert("良好");
+        }else if(score >= 60 && score < 75){
+            alert("及格");
+        }else{
+            alert("不及格")
+        }
+    </script>
+    <script>
+        let grade = "E";
+        switch(grade){
+            case"A":
+                alert("80~100");
+                break;
+            case"B":
+                alert("70~79");
+                break;
+            case"C":
+                alert("60~69");
+                break;
+            case"D":
+                alert("< 60");
+                break;
+            default:
+                alert('error');
+                break;
+        }
+    </script>
+    <script>
+        /*三目运算符
+        格式：
+            表达式1？ 表达式2：表达式3;
+        执行:
+            1.先去判断表达式1是否为真
+            2.表达式1为真，直接取执行表达式2
+            2.表达式1为假，直接执行表表达式3
+
+
+        var num = 8;
+        if（num % 2 ==0){
+            alert('这是一个偶数')
+        }else{
+            alert('这是一个偶数')
+        }
+        */
+        let num = 7;
+        num % 2 ==0 ? alert('这是一个偶数') : alert('这是一个偶数')
+    </script>
+    <script>
+        let month = 4;
+        switch(month){
+            case 1 ;
+            case 3 ;
+            case 5 ;
+            case 7 ;
+            case 8 ;
+            case 10 ;
+            case 12 ;
+                alert("31天");
+                break;
+            case 2 :
+                if(year % 4 == 0 && year && 100 != 0 ||year%400 == 0){
+                    alert("29天");
+                }else{
+                    alert("28天");
+                }
+                break;
+            default:
+                alert("30天");
+                break;
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

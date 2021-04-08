@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BOM</title>
+</head>
+<body>
+<script>
+    // document.write(window.innerHeight,'</br>')
+
+    // document.write(window.innerWidth,'</br>')
+    // window.open("https://www.mzitu.com",'',"height=800px,width=800px,top=400px,left=400px,right=400px")
+    // document.write('</br>')
+    // window.close()
+</script>
+<script>
+    document.write(window.navigator.appName,'</br>')
+    document.write(window.navigator.appVersion,'</br>')
+    document.write(window.navigator.appCodeName,'</br>')
+    document.write(window.navigator.userAgent,'</br>')
+    document.write(window.navigator.platform,'</br>')
+
+</script>
+<script>
+    document.write(navigator.appName,'</br>')
+    document.write(navigator.appVersion,'</br>')
+    document.write(navigator.appCodeName,'</br>')
+    document.write(navigator.userAgent,'</br>')
+    document.write(navigator.platform,'</br>')
+</script>
+<script>
+    // alert('你不要过来啊！')
+    // confirm('你确定？')
+    // prompt('请交出你的手机号码')
+</script>
+<script>
+    //计时器
+    function func1() {
+        alert(123)
+    }
+    let t = setTimeout(func1,3000) //单位为毫秒，3秒之后执行一次函数
+    clearTimeout(t)//取消定时任务，需要提前用变量指代定时任务
+
+</script>
+<script>
+    function func2() {
+        alert(123);
+    }
+    function show() {
+        let t1 = setInterval(func2,3000);
+        function inner() {
+            clearInterval(t1);
+        }
+        setTimeout(inner,9000);
+    }
+    show();
+</script>
+</body>
+</html>

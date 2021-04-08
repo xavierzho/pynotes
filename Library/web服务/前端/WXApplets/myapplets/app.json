@@ -1,0 +1,30 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/home/home"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#1aad19",
+    "navigationBarTitleText": "jones",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "static/img/tabBar/home_nor.png",
+        "selectedIconPath": "static/img/tabBar/home_active.png"
+      },
+      {
+        "pagePath": "pages/home/home",
+        "text": "我的",
+        "iconPath": "static/img/tabBar/user_nor.png",
+        "selectedIconPath": "static/img/tabBar/user_active.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap55.json"
+}

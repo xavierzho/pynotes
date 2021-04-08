@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>06_伪类选择器</title>
+    <style>
+        body {
+            background-color: black;
+        }
+        a:link {
+            color: red;/*访问之前的状态*/
+        }
+        a:hover {
+            color: aqua;/*鼠标悬浮状态*/
+        }
+        a:active {
+            color: black;/*鼠标点击不松开的状态*/
+        }
+        a:visited {
+            color: darkgray;/*访问过后的状态*/
+        }
+        p:hover {
+            color: white;
+            font: 40px ;
+        }
+        input:focus {/*input框获取焦点(鼠标点了input框)*/
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<a href="https://www.jd.com/">小轩在不在?</a>
+<p>点我有你好看哦</p>
+</body>
+</html>
