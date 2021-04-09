@@ -1,6 +1,7 @@
 # Project exclude paths
 /venv/
-/.idea/
+*/.idea/
+*/.vscode/
 *.log
 *.png
 *.jpg

@@ -14,8 +14,17 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from apps.users import views
+from django.urls.resolvers import settings
+from django.views.static import serve
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # u前缀的路由分发到users中
+    path("u/", include("apps.users.urls"), name="users"),
+    path("a/", include("apps.article.urls"), name="books"),
+    path("", views.index, name="index"),
+    path('media/<path:path>', serve, {'document_root': settings.MEDIA_ROOT}, name="media"),  # 暴露media接口
+
 ]

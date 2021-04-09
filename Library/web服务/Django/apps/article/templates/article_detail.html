@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/cc07f70e62.js" crossorigin="anonymous"></script>
+</head>
+<body>
+{#评论楼渲染开始#}
+<div>
+    <ul class="list-group">
+        <li class="list-group-item">
+            {% for comment in comment_list %}
+                <span>#{{ forloop.counter }}楼</span>
+                <span>{{ comment.publish_time|date:'Y-m-d h:i:s' }}</span>
+                <span>{{ comment.user.username }}</span>
+                <span><a class="pull-right reply" username="{{ comment.user.username }}" comment_id="{{ comment.pk }}">回复</a></span>
+                <div>
+                {% if comment.parent_id %}
+                    <p>@{{ comment.parent.user.username }}</p>
+                {% endif %}
+                    {{ comment.content }}
+                </div>
+            {% endfor %}
+
+        </li>
+    </ul>
+
+</div>
+
+{#评论楼渲染结束#}
+{#文章评论样式开始#}
+{% if request.user.is_authenticated %}
+    <div>
+        <p>发表评论</p>
+        <div>
+            <textarea name="comment" id="id_comment" cols="30" rows="10"></textarea>
+        </div>
+        <button class="btn btn-primary" id="commit_comment">提交评论</button>
+    </div>
+    <span style="color: red" id="comment_error"></span>
+{% else %}
+    <a href="{% url 'u_login' %}">请先登录</a>
+{% endif %}
+
+{#文章评论样式结束#}
+<script>
+    //设置一个全局的parentId字段
+    let parentId = null;
+    //点赞点踩的js代码
+    $(".action").click(function () {
+        //alert($(this).hasClass('diggit'))
+        let isUp = $(this).hasClass('diggit');
+        //存储数字改变的div
+        let $div = $(this);
+        //ajax请求
+        $.ajax({
+            url: '{% url "article_up" %}',
+            type: 'post',
+            data: {
+                'article_id': '{{article_obj.pk}}',
+                'is_up': isUp,
+                'csrfmiddlewaretoken': '{{csrf_token}}',
+            },
+            success: function (args) {
+                if (args.code === 200) {
+                    $('').text(args.msg)
+                    //给前端的数字+1
+                    //先获取之前的数字
+                    let oldNum = $div.children().text();//文本是字符类型
+                    $div.chilren().text(Number(oldNum) + 1)
+                } else {
+                    $('').html(args.msg)
+                }
+            }
+        })
+    })
+    //点击评论按钮提交ajax请求
+    $('#commit_comment').click(function () {
+        //获取用户评论内容
+        let comment = $('#id_comment').val()
+        //判断是否是子评论，如果是需要将手动渲染的@username去除
+        if (parentId) {
+            //找到\n的索引值，然后切片，但是切片顾头不顾尾的所以索引要+1
+            let indexNum = comment.indexOf('\n') +1;
+            comment = comment.slice(indexNum) //将indexNum之前的数据切除，只保留后面
+
+        }
+        $.ajax({
+            url: '{% url "article_comment" %}',
+            type: 'post',
+            data: {
+                'article_id': '{{ article_obj.pk }}',
+                'comment': comment,
+                //后端如果存储null，没有关系
+                'parent_id':parentId,
+                'csrfmiddlewaretoken': "{{ csrf_token }}"
+            },
+            success: function (args) {
+                if (args === 200) {
+                    $('#comment_error').text(args.msg)
+                    //将评论框内容清空
+                    $('#id_comment').val('');
+                    //临时渲染评论楼
+                    let userName = '{{ request.user.username }}'
+                    let tmp = `
+                        <li class="list-group-item">
+                        <span>${userName}</span>
+                        <span><a href="" class="pull-right">回复</a></span>
+                        <div>
+                            ${comment}
+                        </div>
+                        </li>
+                    `
+                    //将生成好的标签添加到ul标签内容
+                    $('.list-group').append(tmp);
+                    //清空全局parent_id
+                    parentId = null
+                }
+            }
+        })
+    })
+    $('.reply').on('click', function () {
+        //评论对应的评论人姓名 还需要根评论的主键值,在回复按钮上添加自定属性username和comment_id
+        //获取用户名
+        let commentUserName = $(this).attr('username');
+        //获取主键值
+        parentId = $(this).attr('comment_id');
+        //拼接信息，塞给评论框
+        $('#id_comment').val('@'+commentUserName +'\n').focus()
+
+
+    })
+
+</script>
+</body>
+</html>

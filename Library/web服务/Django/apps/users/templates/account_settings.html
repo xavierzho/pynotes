@@ -1,0 +1,156 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block css %}
+    <script src="{% static 'js/csrftoken.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/setting-menu.css' %}">
+    <style>
+        .avatar {
+            overflow: hidden;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+
+        #btn-avatar {
+            border: 1px solid green;
+            color: green;
+        }
+
+        #id_save {
+            border-radius: 10px;
+            width: 100px;
+        }
+
+        tr:last-child {
+            border: none;
+        }
+
+        tr {
+            display: table-row;
+            vertical-align: inherit;
+            border-color: inherit;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="menu-list">
+                    <ul class="menu">
+                        <li><a href="{% url 'u_account' %}" class="menu-item active" id="account-setting">账户设置</a>
+                        </li>
+                        <li><a href="{% url 'u_profile' %}" class="menu-item" id="profile-setting">个人资料</a>
+                        </li>
+                        <li><a href="{% url 'reset_pwd' %}" class="menu-item" id="reset-pwd">修改密码</a></li>
+                        <li><a href="{% url 'u_others' %}" class="menu-item" id="other-setting">其他设置</a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="col-md-9">
+                {% block content %}
+                    <table>
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <img class="avatar" src="/media/{{ request.user.avatar }}" alt="" id="id_avatar">
+                            </td>
+                            <td>
+                                <input type="file" name="avatar" class="hidden" id="input-avatar">
+                                <a href="javascript:void(0)" class="btn" id="btn-avatar">更换头像</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>用户名</td>
+                            <td><input type="text" value="{{ request.user.username }}" class="form-control" name="username" id="id_username"></td>
+                        </tr>
+                        <tr>
+                            <td>邮箱</td>
+                            <td><input type="text" value="{{ request.user.email }}" class="form-control" name="email" id="id_email"></td>
+                        </tr>
+                        <tr>
+                            <td>手机号</td>
+                            <td>
+                                <div>
+                                    {% if request.user.phone %}
+                                        {{ requset.user.phone }}
+                                    {% else %}
+                                        <input type="text" placeholder="请输入电话号码" class="form-control" name="phone" id="id_phone">
+                                    {% endif %}
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>个人简介</td>
+                            <td>
+                                <div>
+                                    {% if request.user.desc %}
+                                        {{ request.user.desc }}
+                                    {% else %}
+                                        <textarea name="desc" id="id_desc" cols="80" rows="4" placeholder="填写你的个人简介"
+                                                  class="form-control"></textarea>
+                                    {% endif %}
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>个人网站</td>
+                            <td>
+                                <div>
+                                    {% if request.user.selfsite %}
+                                        {{ request.user.selfsite }}
+                                    {% else %}
+                                        <input type="text" name="selfsite" class="form-control" id="id_selfsite">
+                                    {% endif %}
+                                </div>
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                    <input type="submit" value="保存" class="btn btn-success" id="id_save">
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block js %}
+    <script>
+
+        $('#btn-avatar').click(function () {
+            $('#input-avatar').click();
+        })
+        $('#id_save').click(function () {
+            let form = new FormData();
+            let avatar_obj = $('#input-avatar')
+            form.append('avatar', avatar_obj[0].files[0])
+            form.append('username',$("#id_username").val())
+            form.append('email',$("#id_email").val())
+            form.append('phone',$("#id_phone").val())
+            form.append('desc',$("#id_desc").val())
+            form.append('self_site',$("#id_selfsite").val())
+            $.ajax({
+                url: '',
+                type: 'post',
+                data: form,
+                contentType: false,
+                processData: false,
+                success: function (args) {
+                    if (args.code === 200) {
+                        window.location.reload()
+                    }
+                }
+            })
+        })
+    </script>
+{% endblock %}
