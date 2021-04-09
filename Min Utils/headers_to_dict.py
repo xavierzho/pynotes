@@ -24,4 +24,3 @@ print(res)
 #         i = "',\n'"
 #     header += i
 # print(header[2:].replace(' ', '')+'\'')
-

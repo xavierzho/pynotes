@@ -15,7 +15,7 @@ except BaseException:
 try:
     a = input("请输入一个被整除数：")
     b = input("请输入一个除数：")
-    c = float(a)/float(b)
+    c = float(a) / float(b)
     print(c)
 
 except ZeroDivisionError:

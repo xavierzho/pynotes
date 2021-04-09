@@ -3,12 +3,13 @@
 @Created: 2020/12/28
 """
 
-import requests
-import time
 import re
-from pyquery import PyQuery as pq
-from lxml import etree
+import time
+
+import requests
 from bs4 import BeautifulSoup
+from lxml import etree
+from pyquery import PyQuery as pq
 
 
 def cal_time(func):
@@ -25,7 +26,10 @@ base_url = 'https://www.amazon.cn/b/ref=s9_acss_bw_cg_pccateg_2a1_w?node=1062000
 
 
 def get(url):
-    headers = {"User-Agent": 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:82.0) Gecko/20100101 Firefox/82.0', }
+    headers = {
+        "User-Agent":
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:82.0) Gecko/20100101 Firefox/82.0',
+    }
 
     resp = requests.get(url, headers=headers)
     return resp.text
@@ -44,7 +48,8 @@ def parse_by_pq(html):
 @cal_time
 def parse_by_xpath(html):
     for _ in range(50):
-        doc = etree.HTML(html)
+        parser = etree.HTMLParser(recover=True)
+        doc = etree.HTML(html, parser)
         h2_list = doc.xpath('//h2')
         for h2 in h2_list:
             title = h2.xpath('./text()')[0]

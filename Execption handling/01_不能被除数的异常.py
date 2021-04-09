@@ -2,7 +2,7 @@
 
 
 def a():
-    num = 1/0
+    num = 1 / 0
 
 
 def b():
