@@ -43,7 +43,7 @@
     "libVersion": "2.13.2",
     "appid": "wx6d24f74b11f5c833",
     "projectname": "myapplets",
-    "cloudfunctionTemplateRoot": "",
+    "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
     "watchOptions": {
         "ignore": []
     },
