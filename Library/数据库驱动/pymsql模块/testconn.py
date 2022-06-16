@@ -1,14 +1,27 @@
 import pymysql
 
-db = pymysql.connect('localhost', 'root', '1997', 'book_manager')
+conn_info = {
+    "host": "192.168.2.140",
+    "port": 3306,
+    "user": "root",
+    "password": "root",
+    "database": "test"
+}
+db = pymysql.connect(**conn_info)
 
-cursor = db.cursor()
+with db:
+    # with db.cursor() as cursor:
+        # Create a new record
+    #     sql = "INSERT INTO `test0` (`id`,`name`,`age`) VALUES (%s,%s,%s)"
+    #     cursor.execute(sql, ("2", 'pinksale', "22",))
+    #
+    # # db is not autocommit by default. So you must commit to save
+    # # your changes.
+    # db.commit()
 
-cursor.execute('select * from book_info')
-
-data = cursor.fetchone()
-
-# print(f'Database version: {data}')
-print(data)
-
-db.close()
+    with db.cursor() as cursor:
+        # Read a single record
+        sql = "SELECT * FROM `test0` WHERE `id`= %s"
+        cursor.execute(sql, ("1",))
+        result = cursor.fetchone()
+        print(result)

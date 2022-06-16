@@ -19,7 +19,7 @@ beautifulsoup4==4.9.3
 
 w3lib==1.22.0
 
-Twisted==20.3.0
+twisted>=22.4.0
 parsel==1.6.0
 Scrapy>=2.5.1
 scrapy-redis==0.6.8
